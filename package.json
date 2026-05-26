@@ -1,0 +1,33 @@
+{
+  "name": "boulebaar",
+  "description": "Sanity + Nuxt",
+  "scripts": {
+    "dev": "pnpm --stream -r run dev",
+    "web:dev": "pnpm --filter ./web run dev",
+    "cms:dev": "pnpm --filter ./cms run dev",
+    "build": "pnpm --stream -r run build",
+    "web:build": "pnpm --filter ./web run build",
+    "cms:build": "pnpm --filter ./cms run build",
+    "cms:deploy": "pnpm --filter ./cms run deploy",
+    "web:preview": "pnpm --filter ./web run preview",
+    "lint": "pnpm --stream -r run lint",
+    "format": "pnpm --stream -r run format",
+    "typegen": "pnpm --filter ./cms run typegen",
+    "typecheck": "pnpm --stream -r run typecheck",
+    "prepare": "husky"
+  },
+  "workspaces": [
+    "cms",
+    "web"
+  ],
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3"
+  },
+  "lint-staged": {
+    "web/**/*.{js,ts,vue}": "./scripts/lint-web.sh",
+    "cms/**/*.{js,ts}": "./scripts/lint-cms.sh",
+    "*.{js,ts,vue,css,md,json}": "prettier --write"
+  }
+}
