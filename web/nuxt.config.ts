@@ -1,4 +1,5 @@
 import { createResolver } from 'nuxt/kit'
+import tailwindcss from '@tailwindcss/vite'
 
 const { resolve } = createResolver(import.meta.url)
 
@@ -7,7 +8,16 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  modules: ['@nuxt/eslint', '@nuxt/icon', '@nuxt/image'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/icon',
+    '@nuxt/image',
+    '@nuxt/fonts',
+    'shadcn-nuxt',
+    '@vueuse/nuxt',
+  ],
+
+  css: ['~/assets/css/tailwind.css'],
 
   image: {
     quality: 90,
@@ -24,5 +34,11 @@ export default defineNuxtConfig({
         dir: resolve('./app/assets/vectors'),
       },
     ],
+  },
+
+  shadcn: { prefix: '' },
+
+  vite: {
+    plugins: [tailwindcss()],
   },
 })
