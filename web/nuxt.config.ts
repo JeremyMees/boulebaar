@@ -7,7 +7,15 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  modules: ['@nuxt/eslint', '@nuxt/icon'],
+  modules: ['@nuxt/eslint', '@nuxt/icon', '@nuxt/image'],
+
+  image: {
+    quality: 90,
+    sanity: {
+      projectId: process.env.NUXT_SANITY_PROJECT_ID ?? '',
+      dataset: process.env.NUXT_SANITY_DATASET ?? '',
+    },
+  },
 
   icon: {
     customCollections: [
