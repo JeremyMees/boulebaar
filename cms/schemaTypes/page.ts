@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
 import { DocumentIcon } from '@sanity/icons'
+import { pageDocumentTypeNames } from './constants'
 
 export const pageType = defineType({
   name: 'page',
@@ -40,4 +41,4 @@ export const pageType = defineType({
   },
 })
 
-export const pageDocumentTypes = [{ type: 'page' }]
+export const pageDocumentTypes = pageDocumentTypeNames.map(type => ({ type }))

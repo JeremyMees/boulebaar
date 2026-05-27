@@ -13,7 +13,7 @@
     "lint": "eslint",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "typegen": "sanity schema extract && sanity typegen generate"
+    "schema:extract": "sanity schema extract"
   },
   "keywords": [
     "sanity"

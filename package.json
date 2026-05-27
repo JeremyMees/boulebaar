@@ -12,7 +12,7 @@
     "web:preview": "pnpm --filter ./web run preview",
     "lint": "pnpm --stream -r run lint",
     "format": "pnpm --stream -r run format",
-    "typegen": "pnpm --filter ./cms run typegen",
+    "schema:extract": "pnpm --filter ./cms run schema:extract",
     "typecheck": "pnpm --stream -r run typecheck",
     "prepare": "husky"
   },

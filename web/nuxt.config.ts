@@ -18,6 +18,10 @@ export default defineNuxtConfig({
     '@nuxtjs/sanity',
   ],
 
+  alias: {
+    '#cms': resolve('../cms'),
+  },
+
   css: ['~/assets/css/tailwind.css'],
 
   imports: { dirs: ['~/types/*.ts'] },
@@ -32,6 +36,11 @@ export default defineNuxtConfig({
     projectId: process.env.NUXT_SANITY_PROJECT_ID,
     dataset: process.env.NUXT_SANITY_DATASET,
     apiVersion: process.env.NUXT_SANITY_API_VERSION || '2025-10-20',
+    typegen: {
+      enabled: true,
+      schemaTypesPath: '../cms/schemaTypes/typegen.ts',
+      schemaTypesExport: 'typegenSchemaTypes',
+    },
   },
 
   image: {

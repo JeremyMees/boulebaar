@@ -1,1 +1,3 @@
-export const blockTypes = []
+import { blockTypeNames } from './constants'
+
+export const blockTypes = blockTypeNames

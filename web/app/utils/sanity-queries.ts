@@ -32,7 +32,7 @@ export const pageQuery = groq`
     "seo": {
       "_type": "seo",
       "title": coalesce(seo.title, ""),
-      "description": coalesce(seo.description,  ""),
+      "description": coalesce(seo.description, ""),
       "image": seo.image,
       "keywords": coalesce(seo.keywords, []),
     },
