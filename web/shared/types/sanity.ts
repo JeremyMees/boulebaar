@@ -40,6 +40,41 @@ export type Seo = {
 
 export type PageBuilder = null
 
+export type Config = {
+  _id: string
+  _type: 'config'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name?: string
+  number?: string
+  email?: string
+  facebook?: string
+  instagram?: string
+  address?: NavigationLink
+  openingHours?: {
+    monday?: string
+    tuesday?: string
+    wednesday?: string
+    thursday?: string
+    friday?: string
+    saturday?: string
+    sunday?: string
+    cta?: string
+  }
+  navigationLinks?: Array<
+    {
+      _key: string
+    } & NavigationLink
+  >
+}
+
+export type NavigationLink = {
+  _type: 'navigationLink'
+  name?: string
+  link?: Link
+}
+
 export type PageReference = {
   _ref: string
   _type: 'reference'
@@ -210,6 +245,8 @@ export type AllSanitySchemaTypes =
   | SanityImageAssetReference
   | Seo
   | PageBuilder
+  | Config
+  | NavigationLink
   | PageReference
   | Link
   | Page
@@ -253,8 +290,58 @@ export type PageQueryResult = {
     keywords: Array<never>
   }
 } | null
+
+// Source: ../web/shared/utils/sanity-queries.ts
+// Variable: configQuery
+// Query: *[_type == "config"]{    ...,    address {      ...,      "link": {   "type": link.type,  "url": select(    link.type == "email" => "mailto:" + link.email,    link.type == "phone" => "tel:" + link.phone,    coalesce(link.url, link.internalLink->slug.current)  ),  "blank": link.blank,  "parameters": link.parameters,  "anchor": link.anchor }    },    navigationLinks[]{      ...,      "link": {   "type": link.type,  "url": select(    link.type == "email" => "mailto:" + link.email,    link.type == "phone" => "tel:" + link.phone,    coalesce(link.url, link.internalLink->slug.current)  ),  "blank": link.blank,  "parameters": link.parameters,  "anchor": link.anchor }    }  }[0]
+export type ConfigQueryResult = {
+  _id: string
+  _type: 'config'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  name?: string
+  number?: string
+  email?: string
+  facebook?: string
+  instagram?: string
+  address: {
+    _type: 'navigationLink'
+    name?: string
+    link: {
+      type: string | null
+      url: string | null
+      blank: boolean | null
+      parameters: string | null
+      anchor: string | null
+    }
+  } | null
+  openingHours?: {
+    monday?: string
+    tuesday?: string
+    wednesday?: string
+    thursday?: string
+    friday?: string
+    saturday?: string
+    sunday?: string
+    cta?: string
+  }
+  navigationLinks: Array<{
+    _key: string
+    _type: 'navigationLink'
+    name?: string
+    link: {
+      type: string | null
+      url: string | null
+      blank: boolean | null
+      parameters: string | null
+      anchor: string | null
+    }
+  }> | null
+} | null
 declare module '@sanity/client' {
   interface SanityQueries {
     '\n  *[\n    _type in ["page"] &&\n    slug.current == $slug\n  ][0]{\n    ...,\n    content[]{\n      ...,\n    },\n    "seo": {\n      "_type": "seo",\n      "title": coalesce(seo.title, ""),\n      "description": coalesce(seo.description,  ""),\n      "image": seo.image,\n      "keywords": coalesce(seo.keywords, []),\n    },\n  }\n': PageQueryResult
+    '\n  *[_type == "config"]{\n    ...,\n    address {\n      ...,\n      "link": { \n  "type": link.type,\n  "url": select(\n    link.type == "email" => "mailto:" + link.email,\n    link.type == "phone" => "tel:" + link.phone,\n    coalesce(link.url, link.internalLink->slug.current)\n  ),\n  "blank": link.blank,\n  "parameters": link.parameters,\n  "anchor": link.anchor\n }\n    },\n    navigationLinks[]{\n      ...,\n      "link": { \n  "type": link.type,\n  "url": select(\n    link.type == "email" => "mailto:" + link.email,\n    link.type == "phone" => "tel:" + link.phone,\n    coalesce(link.url, link.internalLink->slug.current)\n  ),\n  "blank": link.blank,\n  "parameters": link.parameters,\n  "anchor": link.anchor\n }\n    }\n  }[0]\n': ConfigQueryResult
   }
 }
