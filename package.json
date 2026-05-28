@@ -25,6 +25,11 @@
     "lint-staged": "^16.4.0",
     "prettier": "^3.8.3"
   },
+  "pnpm": {
+    "overrides": {
+      "@vercel/nft": "^0.27.4"
+    }
+  },
   "lint-staged": {
     "web/**/*.{js,ts,vue}": "./scripts/lint-web.sh",
     "cms/**/*.{js,ts}": "./scripts/lint-cms.sh",
