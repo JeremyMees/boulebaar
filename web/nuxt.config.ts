@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxt/fonts',
+    '@nuxt/a11y',
     'shadcn-nuxt',
     '@vueuse/nuxt',
     '@nuxtjs/sanity',
