@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SanityLink > matches snapshot for a basic link 1`] = `"<a href="https://example.com" rel="noopener noreferrer" data-test-sanity-link="" class="">Click me</a>"`;
+
+exports[`SanityLink > matches snapshot for a link with all options 1`] = `"<a href="/page?utm_source=test#section" rel="noopener noreferrer" target="_blank" data-test-sanity-link="" class="">Full link</a>"`;
+
+exports[`SanityLink > matches snapshot when url is undefined 1`] = `"<!--v-if-->"`;
