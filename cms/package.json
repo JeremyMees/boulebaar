@@ -11,7 +11,8 @@
     "dev": "sanity dev",
     "start": "sanity start",
     "lint": "eslint",
-    "format": "prettier --write .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "schema:extract": "sanity schema extract"
   },

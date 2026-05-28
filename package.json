@@ -28,6 +28,6 @@
   "lint-staged": {
     "web/**/*.{js,ts,vue}": "./scripts/lint-web.sh",
     "cms/**/*.{js,ts}": "./scripts/lint-cms.sh",
-    "*.{js,ts,vue,css,md,json}": "prettier --write"
+    "**/*.{js,ts,vue,css,md,json}": "prettier --write"
   }
 }
