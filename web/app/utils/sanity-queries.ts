@@ -1,11 +1,9 @@
 // const imageFragment = `
-//   hotspot,
-//   crop,
-//   "assetRef": asset._ref,
+//   ...,
 //   "url": asset->url,
-//   "altText": coalesce(asset->altText[$language], ""),
-//   "title": coalesce(asset->title[$language], ""),
-//   "description": coalesce(asset->description[$language], ""),
+//   "altText": coalesce(asset->altText, ""),
+//   "title": coalesce(asset->title, ""),
+//   "description": coalesce(asset->description, ""),
 // `
 
 const linkFragment = `
@@ -20,6 +18,8 @@ const linkFragment = `
   "anchor": link.anchor
 `
 
+// _type == "image" => { ${imageFragment} },
+// _type == "link" => { ${linkFragment} },
 export const pageQuery = groq`
   *[
     _type in ["page"] &&

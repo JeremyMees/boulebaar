@@ -3,7 +3,7 @@ import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemaTypes'
 import { iconify } from 'sanity-plugin-iconify'
-import { media } from 'sanity-plugin-media'
+import { media, mediaAssetSource } from 'sanity-plugin-media'
 import { linkField } from 'sanity-plugin-link-field'
 import { pageDocumentTypes } from './schemaTypes/page'
 
@@ -26,5 +26,22 @@ export default defineConfig({
 
   schema: {
     types: schemaTypes,
+  },
+
+  form: {
+    image: {
+      assetSources: previousAssetSources => {
+        return previousAssetSources.filter(
+          assetSource => assetSource !== mediaAssetSource,
+        )
+      },
+    },
+    file: {
+      assetSources: previousAssetSources => {
+        return previousAssetSources.filter(
+          assetSource => assetSource !== mediaAssetSource,
+        )
+      },
+    },
   },
 })

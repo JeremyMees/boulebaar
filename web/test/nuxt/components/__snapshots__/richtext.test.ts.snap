@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Richtext > matches snapshot for a simple block 1`] = `"<p>Hello world</p>"`;
+
+exports[`Richtext > matches snapshot when value is null 1`] = `"<!--v-if-->"`;
