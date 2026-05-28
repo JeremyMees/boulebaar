@@ -22,6 +22,9 @@ export default defineConfig({
           name: 'nuxt',
           include: ['test/nuxt/**/*.{test,spec}.ts'],
           environment: 'nuxt',
+          onConsoleLog: l => {
+            return !l.startsWith('<Suspense>')
+          },
         },
       }),
     ],
