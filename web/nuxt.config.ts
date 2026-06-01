@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     'shadcn-nuxt',
     '@vueuse/nuxt',
     '@nuxtjs/sanity',
+    'motion-v/nuxt',
   ],
 
   alias: {

@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navigation > matches snapshot 1`] = `
+"<div data-v-d582be28="">
+  <header data-v-d582be28="" data-test-navigation="" class="fixed right-0 left-0 top-0 z-10 py-4 nav-scroll-bg">
+    <div data-v-d582be28="" class="content-container grid grid-cols-5 md:grid-cols-3 items-center nav-scroll-color"><a data-v-d582be28="" href="/" class="w-fit"><span data-v-d582be28="" class="iconify i-boulebaar:icon" aria-hidden="true" style="font-size: 40px;"></span></a><a data-v-d582be28="" href="/" class="mx-auto w-fit col-span-3 md:col-span-1"><span data-v-d582be28="" class="iconify i-boulebaar:wordmark" aria-hidden="true" style="font-size: 40px;"></span>
+        <h1 data-v-d582be28="" class="sr-only">Boulebaar</h1>
+      </a>
+      <nav data-v-d582be28="" data-test-navigation-links="" class="hidden justify-end gap-9 md:flex"><a data-v-d582be28="" href="/menu" data-test-sanity-link="" class="cursor-pointer font-medium transition-opacity hover:opacity-60" _type="link">Menu</a><a data-v-d582be28="" href="/reserveer" data-test-sanity-link="" class="cursor-pointer font-medium transition-opacity hover:opacity-60" _type="link">Reserveer</a></nav><button data-v-d582be28="" data-test-navigation-open="" type="button" aria-label="open menu" class="grid size-11 place-items-center justify-self-end md:hidden"><span data-v-d582be28="" class="iconify i-tabler:menu" aria-hidden="true" style="font-size: 40px;"></span></button>
+    </div>
+  </header>
+  <transition-group-stub data-v-d582be28="" appear="true" persisted="false" css="false"></transition-group-stub>
+</div>"
+`;

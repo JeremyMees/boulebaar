@@ -2,6 +2,7 @@
 import { withLeadingSlash } from 'ufo'
 
 const route = useRoute()
+const navVariant = useState<NavigationVariant>('nav-variant', () => 'default')
 
 const slug = computed(() => {
   return Array.isArray(route.params.slug)
@@ -11,6 +12,10 @@ const slug = computed(() => {
 
 const { data } = await useSanityQuery<PageQueryResult>(pageQuery, {
   slug: slug.value,
+})
+
+watchEffect(() => {
+  navVariant.value = data.value ? 'default' : 'simple'
 })
 </script>
 

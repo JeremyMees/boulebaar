@@ -1,0 +1,58 @@
+export const mockConfig: Config = {
+  _id: 'config',
+  _type: 'config',
+  _createdAt: '',
+  _updatedAt: '',
+  _rev: '',
+  name: 'Boulebaar',
+  number: '',
+  email: '',
+  facebook: 'https://facebook.com/boulebaar',
+  instagram: 'https://instagram.com/boulebaar',
+  address: {
+    _type: 'navigationLink',
+    name: 'Korenmarkt 1, 9000 Gent',
+    link: {
+      _type: 'link',
+      url: 'https://maps.example.com',
+      blank: undefined,
+      parameters: undefined,
+      anchor: undefined,
+    },
+  },
+  openingHours: {
+    monday: '',
+    tuesday: '',
+    wednesday: '',
+    thursday: '',
+    friday: '',
+    saturday: '',
+    sunday: '',
+  },
+  navigationLinks: [
+    {
+      _key: '1',
+      _type: 'navigationLink',
+      name: 'Menu',
+      link: {
+        _type: 'link',
+        url: '/menu',
+        blank: undefined,
+        parameters: undefined,
+        anchor: undefined,
+      },
+    },
+    {
+      _key: '2',
+      _type: 'navigationLink',
+      name: 'Reserveer',
+      link: {
+        _type: 'link',
+        url: '/reserveer',
+        blank: undefined,
+        parameters: undefined,
+        anchor: undefined,
+      },
+    },
+  ],
+}
