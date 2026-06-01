@@ -70,7 +70,13 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
-      include: ['@sanity/client'],
+      include: [
+        '@sanity/client',
+        'class-variance-authority',
+        'clsx',
+        'reka-ui',
+        'tailwind-merge',
+      ],
     },
   },
 })
