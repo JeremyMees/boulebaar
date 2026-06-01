@@ -42,7 +42,7 @@ const dayLabelMap: Record<Day, string> = {
       v-for="day in days"
       :key="day"
       data-test-opening-hours-day
-      class="py-1.5 border-b flex justify-between"
+      class="py-1.5 border-b flex justify-between small"
       :class="
         variant === 'light'
           ? 'text-background/85 border-background/15'
