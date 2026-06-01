@@ -27,6 +27,8 @@
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 2px);
   --radius-xl: calc(var(--radius) + 6px);
+
+  --spacing-nav: 108px;
 }
 
 :root {

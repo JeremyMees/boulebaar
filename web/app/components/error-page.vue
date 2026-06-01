@@ -1,12 +1,12 @@
 <script setup lang="ts">
-const { data } = useGlobalConfig()
+const { data } = await useGlobalConfig()
 </script>
 
 <template>
   <section
-    class="content-container flex w-full max-w-prose flex-1 flex-col items-center justify-center py-20 text-center"
+    class="content-container pt-nav flex w-full max-w-prose flex-1 flex-col items-center justify-center text-center"
   >
-    <p class="eyebrow text-accent">foutmelding</p>
+    <p aria-hidden="true" class="eyebrow text-accent">foutmelding</p>
 
     <div
       class="mt-7 font-medium leading-[0.9] tracking-[-0.04em] text-foreground text-[120px] md:text-[200px]"
