@@ -5,8 +5,8 @@ export const mockConfig: Config = {
   _updatedAt: '',
   _rev: '',
   name: 'Boulebaar',
-  number: '',
-  email: '',
+  number: '+32 11 00 00 00',
+  email: 'info@boulebaar.be',
   facebook: 'https://facebook.com/boulebaar',
   instagram: 'https://instagram.com/boulebaar',
   address: {

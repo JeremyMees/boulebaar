@@ -5,5 +5,7 @@
     <main class="relative grow flex flex-col">
       <slot />
     </main>
+
+    <Footer />
   </div>
 </template>
