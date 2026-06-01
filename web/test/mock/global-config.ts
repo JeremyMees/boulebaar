@@ -21,13 +21,13 @@ export const mockConfig: Config = {
     },
   },
   openingHours: {
-    monday: '',
-    tuesday: '',
-    wednesday: '',
-    thursday: '',
-    friday: '',
-    saturday: '',
-    sunday: '',
+    monday: '12:00 - 22:00',
+    tuesday: '12:00 - 22:00',
+    wednesday: 'gesloten',
+    thursday: '12:00 - 22:00',
+    friday: '12:00 - 00:00',
+    saturday: '10:00 - 00:00',
+    sunday: 'gesloten',
   },
   navigationLinks: [
     {

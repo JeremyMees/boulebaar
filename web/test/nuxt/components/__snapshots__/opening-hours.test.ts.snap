@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`OpeningHours > matches snapshot 1`] = `
+"<ul data-test-opening-hours="" class="w-full">
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between text-muted-foreground border-muted"><span data-test-opening-hours-label="">ma</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between text-muted-foreground border-muted"><span data-test-opening-hours-label="">di</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between text-muted-foreground border-muted"><span data-test-opening-hours-label="">wo</span><span data-test-opening-hours-value="">gesloten</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between text-muted-foreground border-muted"><span data-test-opening-hours-label="">do</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between text-muted-foreground border-muted"><span data-test-opening-hours-label="">vr</span><span data-test-opening-hours-value="">12:00 - 00:00</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between text-muted-foreground border-muted"><span data-test-opening-hours-label="">za</span><span data-test-opening-hours-value="">10:00 - 00:00</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between text-muted-foreground border-muted"><span data-test-opening-hours-label="">zo</span><span data-test-opening-hours-value="">gesloten</span></li>
+</ul>"
+`;
