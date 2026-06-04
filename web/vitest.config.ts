@@ -26,6 +26,18 @@ export default defineConfig({
             return !l.startsWith('<Suspense>')
           },
         },
+        nuxtConfig: {
+          sanity: {
+            projectId: 'test',
+            dataset: 'test',
+          },
+          image: {
+            sanity: {
+              projectId: 'test',
+              dataset: 'test',
+            },
+          },
+        },
       }),
     ],
   },
