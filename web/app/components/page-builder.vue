@@ -1,5 +1,7 @@
 <script lang="ts" setup>
+import type { BlockTypeName } from '#cms/schemaTypes/constants'
 import type { BlockMeta } from '~/types/blocks'
+import type { PageQueryResult } from '#imports'
 
 defineProps<
   BlockMeta & {
@@ -7,7 +9,12 @@ defineProps<
   }
 >()
 
-const blockComponents: Record<string, ReturnType<typeof resolveComponent>> = {}
+const blockComponents: Record<
+  BlockTypeName,
+  ReturnType<typeof resolveComponent>
+> = {
+  imageHero: resolveComponent('BlocksImageHero'),
+}
 </script>
 
 <template>

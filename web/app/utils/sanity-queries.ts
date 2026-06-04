@@ -1,10 +1,12 @@
-// const imageFragment = `
-//   ...,
-//   "url": asset->url,
-//   "altText": coalesce(asset->altText, ""),
-//   "title": coalesce(asset->title, ""),
-//   "description": coalesce(asset->description, ""),
-// `
+const imageFragment = `
+  ...,
+  hotspot,
+  crop,
+  "url": asset->url,
+  "altText": coalesce(asset->altText, ""),
+  "title": coalesce(asset->title, ""),
+  "description": coalesce(asset->description, ""),
+`
 
 const linkFragment = `
   "type": link.type,
@@ -18,8 +20,6 @@ const linkFragment = `
   "anchor": link.anchor
 `
 
-// _type == "image" => { ${imageFragment} },
-// _type == "link" => { ${linkFragment} },
 export const pageQuery = groq`
   *[
     _type in ["page"] &&
@@ -28,6 +28,10 @@ export const pageQuery = groq`
     ...,
     content[]{
       ...,
+      _type == "imageHero" => {
+        ...,
+        "image": image { ${imageFragment} },
+      },
     },
     "seo": {
       "_type": "seo",

@@ -1,3 +1,5 @@
+import type { Config } from '#imports'
+
 export const mockConfig: Config = {
   _id: 'config',
   _type: 'config',

@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ImageHero > matches snapshot 1`] = `"<div class="h-[60vw] sm:h-auto max-h-125 w-full overflow-hidden"><img data-nuxt-img="" srcset="https://cdn.sanity.io/images/test/test/abc123-800x600.jpg?q=90&amp;rect=0,60,800,480&amp;fp-x=0.5&amp;fp-y=0.3&amp;auto=format 1x, https://cdn.sanity.io/images/test/test/abc123-800x600.jpg?q=90&amp;rect=0,60,800,480&amp;fp-x=0.5&amp;fp-y=0.3&amp;auto=format 2x" data-test-image="" alt="Alt text of image" class="object-cover w-full h-full" src="https://cdn.sanity.io/images/test/test/abc123-800x600.jpg?q=90&amp;rect=0,60,800,480&amp;fp-x=0.5&amp;fp-y=0.3&amp;auto=format"></div>"`;

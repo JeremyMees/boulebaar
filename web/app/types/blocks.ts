@@ -29,6 +29,17 @@ type RichBlock = {
   level?: number
 }
 
+export type SanityImage = {
+  asset?: SanityImageAssetReference | undefined
+  media?: unknown
+  hotspot?: SanityImageHotspot
+  crop?: SanityImageCrop
+  _type: 'image'
+  altText?: string
+  title?: string
+  description?: string
+}
+
 export type PortableTextValue =
   | Array<RichBlock | InlineLinkBlock>
   | null
