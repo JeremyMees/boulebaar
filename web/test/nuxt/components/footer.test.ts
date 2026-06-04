@@ -39,7 +39,7 @@ describe('Footer', () => {
       facebook: '',
       address: {
         ...mockConfig.address,
-        link: { ...mockConfig.address.link, url: undefined } as Link,
+        link: { ...mockConfig.address.link, url: '' },
       },
     }
 

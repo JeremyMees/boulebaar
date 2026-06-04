@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { BlockMeta, SanityImage } from '@/types/blocks'
-import type { ImageHero } from '#imports'
 
 defineProps<BlockMeta & ImageHero & { image: SanityImage }>()
 </script>

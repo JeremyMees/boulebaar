@@ -1,8 +1,6 @@
-import type { Config } from '#imports'
-
-export const mockConfig: Config = {
+export const mockConfig = {
   _id: 'config',
-  _type: 'config',
+  _type: 'config' as const,
   _createdAt: '',
   _updatedAt: '',
   _rev: '',
@@ -12,10 +10,10 @@ export const mockConfig: Config = {
   facebook: 'https://facebook.com/boulebaar',
   instagram: 'https://instagram.com/boulebaar',
   address: {
-    _type: 'navigationLink',
+    _type: 'navigationLink' as const,
     name: 'Korenmarkt 1, 9000 Gent',
     link: {
-      _type: 'link',
+      _type: 'link' as const,
       url: 'https://maps.example.com',
       blank: undefined,
       parameters: undefined,
@@ -34,10 +32,10 @@ export const mockConfig: Config = {
   navigationLinks: [
     {
       _key: '1',
-      _type: 'navigationLink',
+      _type: 'navigationLink' as const,
       name: 'Menu',
       link: {
-        _type: 'link',
+        _type: 'link' as const,
         url: '/menu',
         blank: undefined,
         parameters: undefined,
@@ -46,10 +44,10 @@ export const mockConfig: Config = {
     },
     {
       _key: '2',
-      _type: 'navigationLink',
+      _type: 'navigationLink' as const,
       name: 'Reserveer',
       link: {
-        _type: 'link',
+        _type: 'link' as const,
         url: '/reserveer',
         blank: undefined,
         parameters: undefined,

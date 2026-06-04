@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import type { BlockTypeName } from '#cms/schemaTypes/constants'
 import type { BlockMeta } from '~/types/blocks'
-import type { PageQueryResult } from '#imports'
 
 defineProps<
   BlockMeta & {
