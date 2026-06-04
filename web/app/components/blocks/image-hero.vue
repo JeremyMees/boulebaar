@@ -11,7 +11,10 @@ defineProps<BlockMeta & ImageHero & { image: SanityImage }>()
         v-if="image?.asset"
         data-test-image
         :asset-id="image.asset._ref"
-        :modifiers="{ crop: image.crop, hotspot: image.hotspot }"
+        :modifiers="{
+          ...(image.crop ? { crop: image.crop } : {}),
+          ...(image.hotspot ? { hotspot: image.hotspot } : {}),
+        }"
         :alt="image.altText"
         preload
         class="object-cover w-full h-full"
