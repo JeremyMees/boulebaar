@@ -39,7 +39,7 @@ const dayLabelMap: Record<Day, string> = {
 </script>
 
 <template>
-  <ul data-test-opening-hours :class="cn('w-full', props.class)">
+  <ul id="visit" data-test-opening-hours :class="cn('w-full', props.class)">
     <li
       v-for="day in days"
       :key="day"

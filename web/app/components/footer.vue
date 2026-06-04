@@ -20,7 +20,7 @@ const { data: config } = await useGlobalConfig()
           <OpeningHours variant="light" />
         </div>
 
-        <div class="lg:col-span-2 flex flex-col gap-4">
+        <div id="contact" class="lg:col-span-2 flex flex-col gap-4">
           <span class="eyebrow text-primary">vind ons</span>
           <div class="text-background/85 small flex flex-col gap-1.5">
             <NuxtLink

@@ -6,7 +6,7 @@ exports[`InfoColumns > matches snapshot 1`] = `
     <!--v-if-->
     <div data-test-content="" class="flex flex-col gap-2">
       <p class="font-semibold">Opening hours title</p>
-      <ul data-test-opening-hours="" class="w-full">
+      <ul id="visit" data-test-opening-hours="" class="w-full">
         <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">ma</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
         <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">di</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
         <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">wo</span><span data-test-opening-hours-value="">gesloten</span></li>
