@@ -22,20 +22,9 @@ export default defineConfig({
           name: 'nuxt',
           include: ['test/nuxt/**/*.{test,spec}.ts'],
           environment: 'nuxt',
+          setupFiles: ['./test/nuxt/setup.ts'],
           onConsoleLog: l => {
             return !l.startsWith('<Suspense>')
-          },
-        },
-        nuxtConfig: {
-          sanity: {
-            projectId: 'test',
-            dataset: 'test',
-          },
-          image: {
-            sanity: {
-              projectId: 'test',
-              dataset: 'test',
-            },
           },
         },
       }),
