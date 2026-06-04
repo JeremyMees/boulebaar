@@ -13,6 +13,13 @@ const imageHeroType = defineType({
       options: {
         hotspot: true,
       },
+      validation: rule => rule.required(),
+    }),
+    defineField({
+      name: 'text',
+      type: 'array',
+      of: [{ type: 'block' }],
+      validation: rule => rule.required(),
     }),
   ],
   preview: {

@@ -1,13 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import ImageHero from '~/components/blocks/image-hero.vue'
-import { mockImage } from '~~/test/mock'
+import { mockImage, mockRichtext } from '~~/test/mock'
 
 const props = {
   documentId: 'doc-1',
   documentType: 'page',
   _type: 'imageHero' as const,
   image: mockImage,
+  text: mockRichtext,
 }
 
 describe('ImageHero', () => {
@@ -44,6 +45,20 @@ describe('ImageHero', () => {
 
     expect(wrapper.find('[data-test-image]').attributes('alt')).toBe(
       mockImage.altText,
+    )
+  })
+
+  it('renders the content section', async () => {
+    const wrapper = await mountSuspended(ImageHero, { props })
+
+    expect(wrapper.find('[data-test-content]').exists()).toBe(true)
+  })
+
+  it('renders the text in the content section', async () => {
+    const wrapper = await mountSuspended(ImageHero, { props })
+
+    expect(wrapper.find('[data-test-content]').text()).toContain(
+      'Mock richtext content',
     )
   })
 })

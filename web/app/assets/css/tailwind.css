@@ -138,4 +138,15 @@
     @apply md:px-6;
     @apply lg:px-10;
   }
+
+  .richtext {
+    @apply [&_h2]:pt-8 [&_h2]:md:pt-12 [&_h2]:pb-3;
+    @apply [&_h3]:pb-2;
+    @apply [&_strong]:font-bold;
+    @apply [&_p]:pb-4;
+    @apply [&_ol]:list-decimal [&_ol]:list-inside [&_ol]:mb-6;
+    @apply [&_ul]:list-disc [&_ul]:list-inside [&_ul]:mb-6;
+    @apply [&_li]:my-1;
+    @apply [&_a]:hover:text-primary [&_a]:border-b [&_a]:border-primary [&_a]:pb-0.5 [&_a]:no-underline [&_a]:transition-colors;
+  }
 }
