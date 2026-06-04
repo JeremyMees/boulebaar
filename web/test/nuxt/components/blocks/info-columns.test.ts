@@ -107,7 +107,7 @@ describe('InfoColumns', () => {
     const wrapper = await mountSuspended(InfoColumns, {
       props: {
         ...props,
-        columns: [{ ...textColumn, text: undefined }],
+        columns: [{ ...textColumn, text: undefined as unknown as RichBlock[] }],
       },
     })
 
