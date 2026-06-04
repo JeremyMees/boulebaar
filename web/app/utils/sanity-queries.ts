@@ -32,6 +32,13 @@ export const pageQuery = groq`
         ...,
         "image": image { ${imageFragment} },
       },
+      _type == "infoColumns" => {
+        ...,
+        "columns": columns[]{
+          ...,
+          "image": image { ${imageFragment} },
+        }
+      },
     },
     "seo": {
       "_type": "seo",

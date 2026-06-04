@@ -13,6 +13,7 @@ const blockComponents: Record<
   ReturnType<typeof resolveComponent>
 > = {
   imageHero: resolveComponent('BlocksImageHero'),
+  infoColumns: resolveComponent('BlocksInfoColumns'),
 }
 </script>
 

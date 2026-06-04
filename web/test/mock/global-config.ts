@@ -28,6 +28,7 @@ export const mockConfig = {
     friday: '12:00 - 00:00',
     saturday: '10:00 - 00:00',
     sunday: 'gesloten',
+    cta: '',
   },
   navigationLinks: [
     {

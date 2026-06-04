@@ -5,5 +5,8 @@ export const pageBuilderType = defineType({
   name: 'pageBuilder',
   type: 'array',
   icon: BlockElementIcon,
-  of: [defineArrayMember({ type: 'imageHero' })],
+  of: [
+    defineArrayMember({ type: 'imageHero' }),
+    defineArrayMember({ type: 'infoColumns' }),
+  ],
 })

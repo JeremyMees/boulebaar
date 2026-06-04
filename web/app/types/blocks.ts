@@ -35,6 +35,7 @@ export type SanityImage = {
   hotspot?: SanityImageHotspot
   crop?: SanityImageCrop
   _type: 'image'
+  url?: string
   altText?: string
   title?: string
   description?: string
@@ -73,4 +74,16 @@ export interface SanityLink {
 export type SanityIcon = {
   _type: 'icon'
   name?: string
+}
+
+type DistributiveOmit<T, K extends PropertyKey> = T extends unknown
+  ? Omit<T, K>
+  : never
+
+export type InfoColumnsBlock = Omit<InfoColumns, 'columns'> & {
+  columns: Array<
+    DistributiveOmit<NonNullable<InfoColumns['columns']>[number], 'image'> & {
+      image: SanityImage | null
+    }
+  >
 }
