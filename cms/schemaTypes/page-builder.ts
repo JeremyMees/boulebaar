@@ -8,5 +8,6 @@ export const pageBuilderType = defineType({
   of: [
     defineArrayMember({ type: 'imageHero' }),
     defineArrayMember({ type: 'infoColumns' }),
+    defineArrayMember({ type: 'menu' }),
   ],
 })

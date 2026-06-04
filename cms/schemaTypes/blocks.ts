@@ -48,11 +48,13 @@ const infoColumnsType = defineType({
             defineField({
               name: 'title',
               type: 'string',
+              validation: rule => rule.required(),
             }),
             defineField({
               name: 'text',
               type: 'array',
               of: [{ type: 'block' }],
+              validation: rule => rule.required(),
             }),
             defineField({
               name: 'image',
@@ -60,6 +62,7 @@ const infoColumnsType = defineType({
               options: {
                 hotspot: true,
               },
+              validation: rule => rule.required(),
             }),
           ],
         }),
@@ -70,6 +73,7 @@ const infoColumnsType = defineType({
             defineField({
               name: 'title',
               type: 'string',
+              validation: rule => rule.required(),
             }),
             defineField({
               name: 'image',
@@ -77,11 +81,12 @@ const infoColumnsType = defineType({
               options: {
                 hotspot: true,
               },
+              validation: rule => rule.required(),
             }),
           ],
         }),
       ],
-      validation: rule => rule.required(),
+      validation: rule => rule.required() && rule.min(1) && rule.max(3),
     }),
   ],
   preview: {
@@ -93,4 +98,82 @@ const infoColumnsType = defineType({
   },
 })
 
-export const blockTypes = [imageHeroType, infoColumnsType]
+const menuItemType = defineType({
+  name: 'menuItem',
+  title: 'Menu Item',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'name',
+      type: 'string',
+      validation: rule => rule.required(),
+    }),
+    defineField({
+      name: 'price',
+      type: 'string',
+      validation: rule => rule.required(),
+    }),
+    defineField({
+      name: 'ingredients',
+      type: 'string',
+    }),
+    defineField({
+      name: 'vegan',
+      type: 'boolean',
+      initialValue: false,
+    }),
+  ],
+})
+
+const menuType = defineType({
+  name: 'menu',
+  title: 'Menu',
+  type: 'object',
+  icon: ComponentIcon,
+  fields: [
+    defineField({
+      name: 'title',
+      type: 'string',
+      validation: rule => rule.required(),
+    }),
+    defineField({
+      name: 'menuBlock',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'menuSection',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              type: 'string',
+              validation: rule => rule.required(),
+            }),
+            defineField({
+              name: 'items',
+              type: 'array',
+              of: [{ type: 'menuItem' }],
+              validation: rule =>
+                rule.required() && rule.min(1) && rule.max(10),
+            }),
+          ],
+        }),
+      ],
+      validation: rule => rule.required() && rule.min(1) && rule.max(10),
+    }),
+  ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Menu',
+      }
+    },
+  },
+})
+
+export const blockTypes = [
+  imageHeroType,
+  infoColumnsType,
+  menuItemType,
+  menuType,
+]

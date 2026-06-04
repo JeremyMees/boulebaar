@@ -14,7 +14,7 @@ export interface BlockMeta {
   documentType: string
 }
 
-type RichBlock = {
+export type RichBlock = {
   _type: 'block'
   _key: string
   children?: Array<{

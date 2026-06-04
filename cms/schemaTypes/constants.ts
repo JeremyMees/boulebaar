@@ -1,9 +1,18 @@
 import { blockTypes } from './blocks'
 
-export type BlockTypeName = (typeof blockTypes)[number]['name']
+const blockBlacklist = ['menuItem'] as const
+type BlacklistedBlock = (typeof blockBlacklist)[number]
 
-export const blockTypeNames: readonly BlockTypeName[] = blockTypes.map(
-  block => block.name,
-)
+export type BlockTypeName = Exclude<
+  (typeof blockTypes)[number]['name'],
+  BlacklistedBlock
+>
+
+export const blockTypeNames: readonly BlockTypeName[] = blockTypes
+  .map(block => block.name)
+  .filter(
+    (name): name is BlockTypeName =>
+      !(blockBlacklist as readonly string[]).includes(name),
+  )
 
 export const pageDocumentTypeNames = ['page'] as const

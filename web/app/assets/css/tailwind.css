@@ -134,7 +134,7 @@
   }
 
   .content-container {
-    @apply max-w-450 mx-auto w-full px-4;
+    @apply max-w-400 mx-auto w-full px-4;
     @apply md:px-6;
     @apply lg:px-10;
   }
