@@ -9,5 +9,6 @@ exports[`OpeningHours > matches snapshot 1`] = `
   <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">vr</span><span data-test-opening-hours-value="">12:00 - 00:00</span></li>
   <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">za</span><span data-test-opening-hours-value="">10:00 - 00:00</span></li>
   <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">zo</span><span data-test-opening-hours-value="">gesloten</span></li>
+  <!--v-if-->
 </ul>"
 `;

@@ -16,6 +16,7 @@ exports[`Footer > matches snapshot 1`] = `
           <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-background/85 border-background/15"><span data-test-opening-hours-label="">vr</span><span data-test-opening-hours-value="">12:00 - 00:00</span></li>
           <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-background/85 border-background/15"><span data-test-opening-hours-label="">za</span><span data-test-opening-hours-value="">10:00 - 00:00</span></li>
           <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-background/85 border-background/15"><span data-test-opening-hours-label="">zo</span><span data-test-opening-hours-value="">gesloten</span></li>
+          <!--v-if-->
         </ul>
       </div>
       <div class="lg:col-span-2 flex flex-col gap-4"><span class="eyebrow text-primary">vind ons</span>

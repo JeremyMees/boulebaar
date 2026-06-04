@@ -5,10 +5,12 @@ import type { openingHoursVariant } from '~/types/components'
 const props = withDefaults(
   defineProps<{
     variant?: openingHoursVariant
+    showCta?: boolean
     class?: HTMLAttributes['class']
   }>(),
   {
     variant: 'dark',
+    showCta: false,
     class: '',
   },
 )
@@ -54,5 +56,12 @@ const dayLabelMap: Record<Day, string> = {
         config?.openingHours?.[day]
       }}</span>
     </li>
+    <div
+      v-if="showCta && config?.openingHours?.cta"
+      data-test-opening-hours-cta
+      class="small pt-1.5"
+    >
+      {{ config.openingHours.cta }}
+    </div>
   </ul>
 </template>

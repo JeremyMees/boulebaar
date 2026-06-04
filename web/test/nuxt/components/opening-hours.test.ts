@@ -87,4 +87,33 @@ describe('OpeningHours', () => {
     expect(row.classes()).toContain('text-background/85')
     expect(row.classes()).toContain('border-background/15')
   })
+
+  it('does not render cta by default', async () => {
+    const wrapper = await mountSuspended(OpeningHours)
+
+    expect(wrapper.find('[data-test-opening-hours-cta]').exists()).toBe(false)
+  })
+
+  it('does not render cta when showCta is true but config has no cta', async () => {
+    const wrapper = await mountSuspended(OpeningHours, {
+      props: { showCta: true },
+    })
+
+    expect(wrapper.find('[data-test-opening-hours-cta]').exists()).toBe(false)
+  })
+
+  it('renders cta when showCta is true and config has cta', async () => {
+    currentConfig = {
+      ...mockConfig,
+      openingHours: { ...mockConfig.openingHours, cta: 'Reserveer nu!' },
+    }
+    const wrapper = await mountSuspended(OpeningHours, {
+      props: { showCta: true },
+    })
+
+    expect(wrapper.find('[data-test-opening-hours-cta]').exists()).toBe(true)
+    expect(wrapper.find('[data-test-opening-hours-cta]').text()).toBe(
+      'Reserveer nu!',
+    )
+  })
 })
