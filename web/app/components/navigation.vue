@@ -33,11 +33,11 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
         :class="variant === 'default' ? 'nav-scroll-color' : 'text-foreground'"
       >
         <NuxtLink to="/" class="w-fit">
-          <Icon name="boulebaar:icon" size="40" />
+          <SvgIcon class="size-10" />
         </NuxtLink>
 
         <NuxtLink to="/" class="mx-auto w-fit col-span-3 md:col-span-1">
-          <Icon aria-hidden="true" name="boulebaar:wordmark" size="40" />
+          <SvgWordmark class="h-10" />
           <h1 class="sr-only">{{ config?.name ?? '' }}</h1>
         </NuxtLink>
 
@@ -83,10 +83,10 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
         class="fixed inset-0 z-50 flex flex-col bg-foreground text-background"
       >
         <header class="content-container grid grid-cols-5 items-center py-4">
-          <Icon name="boulebaar:icon" size="40" />
+          <SvgIcon class="size-10" />
 
           <div class="justify-self-center col-span-3">
-            <Icon aria-hidden="true" name="boulebaar:wordmark" size="40" />
+            <SvgWordmark class="h-10" />
           </div>
 
           <button

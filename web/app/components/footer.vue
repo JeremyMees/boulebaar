@@ -7,10 +7,8 @@ const { data: config } = await useGlobalConfig()
     <footer class="content-container pt-16 pb-8 flex flex-col gap-10">
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-16">
         <div class="sm:col-span-2 lg:col-span-3 text-background">
-          <Icon
+          <SvgWordmark
             data-test-footer-wordmark
-            name="boulebaar:wordmark"
-            mode="svg"
             class="w-full h-auto max-w-lg"
           />
         </div>
@@ -94,10 +92,10 @@ const { data: config } = await useGlobalConfig()
         </span>
 
         <div class="flex gap-1 text-primary">
-          <Icon name="boulebaar:icon" size="24" />
-          <Icon name="boulebaar:icon" size="24" />
-          <Icon name="boulebaar:icon" size="24" />
-          <Icon name="boulebaar:icon" size="24" />
+          <SvgIcon class="size-6" />
+          <SvgIcon class="size-6" />
+          <SvgIcon class="size-6" />
+          <SvgIcon class="size-6" />
         </div>
       </div>
     </footer>

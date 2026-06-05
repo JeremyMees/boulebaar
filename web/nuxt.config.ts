@@ -59,15 +59,6 @@ export default defineNuxtConfig({
     },
   },
 
-  icon: {
-    customCollections: [
-      {
-        prefix: 'boulebaar',
-        dir: resolve('./app/assets/vectors'),
-      },
-    ],
-  },
-
   shadcn: { prefix: '' },
 
   sitemap: {

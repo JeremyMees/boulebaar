@@ -32,7 +32,7 @@ defineProps<BlockMeta & ImageHero & { image: SanityImage }>()
         </div>
       </div>
       <div class="hidden md:block text-primary">
-        <Icon name="boulebaar:icon" size="200" class="scale-x-[-1]" />
+        <SvgIcon class="size-50 scale-x-[-1]" />
       </div>
     </div>
   </section>
