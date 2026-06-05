@@ -14,6 +14,8 @@ const { data } = await useSanityQuery<PageQueryResult>(pageQuery, {
   slug: slug.value,
 })
 
+useSeo(() => data.value?.seo)
+
 watchEffect(() => {
   navVariant.value = data.value ? 'default' : 'simple'
 })

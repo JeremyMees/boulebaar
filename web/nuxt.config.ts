@@ -1,5 +1,6 @@
 import { createResolver } from 'nuxt/kit'
 import tailwindcss from '@tailwindcss/vite'
+import { defaultSeo } from './app/utils/seo'
 
 const { resolve } = createResolver(import.meta.url)
 
@@ -18,6 +19,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/sanity',
     'motion-v/nuxt',
+    '@nuxtjs/seo',
   ],
 
   alias: {
@@ -67,6 +69,23 @@ export default defineNuxtConfig({
   },
 
   shadcn: { prefix: '' },
+
+  sitemap: {
+    sources: ['/api/__sitemap__/urls'],
+  },
+
+  site: {
+    url: process.env.NUXT_PUBLIC_BASE_URL,
+    name: defaultSeo.name,
+    description: defaultSeo.description,
+    defaultLocale: 'nl',
+    trailingSlash: false,
+    indexable: true,
+  },
+
+  ogImage: {
+    enabled: false,
+  },
 
   vite: {
     plugins: [tailwindcss()],
