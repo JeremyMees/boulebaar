@@ -78,6 +78,15 @@ export default defineNuxtConfig({
     enabled: false,
   },
 
+  routeRules: {
+    '/**': {
+      headers: {
+        'X-Frame-Options': '',
+        'Content-Security-Policy': `frame-ancestors 'self' ${process.env.NUXT_SANITY_STUDIO_URL} https://*.sanity.studio`,
+      },
+    },
+  },
+
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
