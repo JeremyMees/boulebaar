@@ -35,7 +35,6 @@ const configType = defineType({
     defineField({
       name: 'number',
       type: 'string',
-      validation: rule => rule.required(),
     }),
     defineField({
       name: 'email',
