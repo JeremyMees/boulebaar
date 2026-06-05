@@ -82,7 +82,7 @@ export default defineNuxtConfig({
     '/**': {
       headers: {
         'X-Frame-Options': '',
-        'Content-Security-Policy': `frame-ancestors 'self' ${process.env.NUXT_SANITY_STUDIO_URL} https://*.sanity.studio`,
+        'Content-Security-Policy': `frame-ancestors 'self' ${process.env.NUXT_SANITY_STUDIO_URL} https://*.sanity.studio http://localhost:3333`,
       },
     },
   },
