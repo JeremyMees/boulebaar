@@ -36,7 +36,7 @@ defineProps<BlockMeta & Menu>()
                 <span
                   v-if="item.vegan"
                   data-test-vegan
-                  class="absolute top-0 -right-4 text-xs text-accent font-bold"
+                  class="absolute top-0 -right-4 text-xs font-bold"
                 >
                   vg
                 </span>

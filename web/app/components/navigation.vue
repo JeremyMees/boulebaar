@@ -32,11 +32,15 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
         class="content-container grid grid-cols-5 md:grid-cols-3 items-center"
         :class="variant === 'default' ? 'nav-scroll-color' : 'text-foreground'"
       >
-        <NuxtLink to="/" class="w-fit">
+        <NuxtLink to="/" class="w-fit" aria-label="home">
           <SvgIcon class="size-10" />
         </NuxtLink>
 
-        <NuxtLink to="/" class="mx-auto w-fit col-span-3 md:col-span-1">
+        <NuxtLink
+          to="/"
+          class="mx-auto w-fit col-span-3 md:col-span-1"
+          aria-label="home"
+        >
           <SvgWordmark class="h-10" />
           <h1 class="sr-only">{{ config?.name ?? '' }}</h1>
         </NuxtLink>
@@ -82,7 +86,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
         :transition="{ duration: 0.3, ease: 'easeOut' }"
         class="fixed inset-0 z-50 flex flex-col bg-foreground text-background"
       >
-        <header class="content-container grid grid-cols-5 items-center py-4">
+        <div class="content-container grid grid-cols-5 items-center py-4">
           <SvgIcon class="size-10" />
 
           <div class="justify-self-center col-span-3">
@@ -98,7 +102,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
           >
             <Icon name="tabler:x" size="40" />
           </button>
-        </header>
+        </div>
 
         <Motion
           as="nav"
@@ -141,6 +145,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
         </Motion>
 
         <Motion
+          as="footer"
           :initial="{ opacity: 0, y: 16 }"
           :animate="{ opacity: 1, y: 0 }"
           :transition="{ duration: 0.5, delay: 0.46, ease: [0.2, 0.7, 0.2, 1] }"
@@ -151,7 +156,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
             data-test-navigation-address
             :to="config.address.link.url"
             target="_blank"
-            class="text-sm leading-snug opacity-85"
+            class="text-sm leading-snug text-background"
           >
             {{ config?.address?.name }}
           </NuxtLink>
@@ -165,6 +170,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
               data-test-navigation-instagram
               :to="config.instagram"
               target="_blank"
+              aria-label="Instagram"
               class="text-primary"
             >
               <Icon name="tabler:brand-instagram" size="20" />
@@ -174,6 +180,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
               data-test-navigation-facebook
               :to="config.facebook"
               target="_blank"
+              aria-label="Facebook"
               class="text-primary"
             >
               <Icon name="tabler:brand-facebook" size="20" />

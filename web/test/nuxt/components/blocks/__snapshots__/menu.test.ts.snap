@@ -18,7 +18,7 @@ exports[`Menu > matches snapshot 1`] = `
       <div data-test-block-column="" class="flex flex-col gap-4">
         <div data-test-block-column-item="" class="flex flex-col gap-0.5">
           <div class="flex items-center justify-between">
-            <h4 data-test-item-name="" class="relative">Avocado toast <span data-test-vegan="" class="absolute top-0 -right-4 text-xs text-accent font-bold"> vg </span></h4><small data-test-item-price="">€9</small>
+            <h4 data-test-item-name="" class="relative">Avocado toast <span data-test-vegan="" class="absolute top-0 -right-4 text-xs font-bold"> vg </span></h4><small data-test-item-price="">€9</small>
           </div>
           <!--v-if-->
         </div>

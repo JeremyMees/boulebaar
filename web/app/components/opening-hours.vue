@@ -56,12 +56,12 @@ const dayLabelMap: Record<Day, string> = {
         config?.openingHours?.[day]
       }}</span>
     </li>
-    <div
+    <li
       v-if="showCta && config?.openingHours?.cta"
       data-test-opening-hours-cta
       class="small pt-1.5"
     >
       {{ config.openingHours.cta }}
-    </div>
+    </li>
   </ul>
 </template>
