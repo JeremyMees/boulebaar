@@ -2,7 +2,7 @@
 
 exports[`ImageHero > matches snapshot 1`] = `
 "<section>
-  <div class="h-[60vw] sm:h-auto max-h-125 w-full overflow-hidden"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" preload="" class="object-cover w-full h-full"></div>
+  <div class="h-[60vw] sm:h-auto max-h-125 w-full overflow-hidden"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" preload="" loading="eager" fetchpriority="high" class="object-cover w-full h-full"></div>
   <div data-test-content="" class="content-container py-8 md:pt-16 flex justify-between gap-10">
     <div class="flex flex-col gap-6">
       <div class="w-14 h-0.5 bg-foreground"></div>
