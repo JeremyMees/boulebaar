@@ -92,6 +92,7 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include: [
         '@sanity/client',
+        '@sanity/image-url',
         'class-variance-authority',
         'clsx',
         'reka-ui',
