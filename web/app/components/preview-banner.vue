@@ -43,7 +43,11 @@ const studioUrl = computed(() => {
             </NuxtLink>
           </Button>
           <Button as-child size="sm" variant="secondary">
-            <NuxtLink :to="disableUrl" data-test-preview-banner-disable>
+            <NuxtLink
+              :to="disableUrl"
+              external
+              data-test-preview-banner-disable
+            >
               <Icon name="tabler:x" />
               Preview afsluiten
             </NuxtLink>
