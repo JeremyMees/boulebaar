@@ -23,6 +23,7 @@ defineProps<BlockMeta & InfoColumnsBlock>()
           ...(column.image.hotspot ? { hotspot: column.image.hotspot } : {}),
         }"
         :alt="column.image.altText"
+        sizes="100vw md:50vw lg:33vw"
         class="object-cover w-full aspect-10/12"
       />
       <div data-test-content class="flex flex-col gap-2">

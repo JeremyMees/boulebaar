@@ -18,7 +18,7 @@ exports[`InfoColumns > matches snapshot 1`] = `
       </ul>
     </div>
   </div>
-  <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" class="object-cover w-full aspect-10/12">
+  <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="100vw md:50vw lg:33vw" class="object-cover w-full aspect-10/12">
     <div data-test-content="" class="flex flex-col gap-2">
       <p class="font-semibold">Text column title</p>
       <div data-test-text="" class="[&amp;_p]:text-sm [&amp;_p]:leading-[1.55] [&amp;_p]:text-muted-foreground">
@@ -26,7 +26,7 @@ exports[`InfoColumns > matches snapshot 1`] = `
       </div>
     </div>
   </div>
-  <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" class="object-cover w-full aspect-10/12">
+  <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="100vw md:50vw lg:33vw" class="object-cover w-full aspect-10/12">
     <div data-test-content="" class="flex flex-col gap-2">
       <p class="font-semibold">Text column title</p>
       <div data-test-text="" class="[&amp;_p]:text-sm [&amp;_p]:leading-[1.55] [&amp;_p]:text-muted-foreground">
