@@ -39,7 +39,6 @@ export default defineNuxtConfig({
   sanity: {
     projectId: process.env.NUXT_SANITY_PROJECT_ID,
     dataset: process.env.NUXT_SANITY_DATASET,
-    apiVersion: process.env.NUXT_SANITY_API_VERSION,
     typegen: {
       enabled: true,
       schemaTypesPath: '../cms/schemaTypes/typegen.ts',
@@ -82,7 +81,7 @@ export default defineNuxtConfig({
     '/**': {
       headers: {
         'X-Frame-Options': '',
-        'Content-Security-Policy': `frame-ancestors 'self' ${process.env.NUXT_SANITY_STUDIO_URL} https://*.sanity.studio http://localhost:3333`,
+        'Content-Security-Policy': `frame-ancestors 'self' ${process.env.NUXT_SANITY_STUDIO_URL} https://*.sanity.studio https://www.sanity.io https://sanity.io http://localhost:3333`,
       },
     },
   },
