@@ -76,119 +76,125 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
       </div>
     </header>
 
-    <AnimatePresence>
-      <Motion
-        v-if="mobileNavOpen"
-        data-test-navigation-overlay
-        :initial="{ opacity: 0 }"
-        :animate="{ opacity: 1 }"
-        :exit="{ opacity: 0 }"
-        :transition="{ duration: 0.3, ease: 'easeOut' }"
-        class="fixed inset-0 z-50 flex flex-col bg-foreground text-background"
-      >
-        <div class="content-container grid grid-cols-5 items-center py-4">
-          <SvgIcon class="size-10" />
-
-          <div class="justify-self-center col-span-3">
-            <SvgWordmark class="h-10" />
-          </div>
-
-          <button
-            data-test-navigation-close
-            type="button"
-            aria-label="close menu"
-            class="grid size-11 place-items-center justify-self-end"
-            @click="mobileNavOpen = false"
-          >
-            <Icon name="tabler:x" size="40" />
-          </button>
-        </div>
-
+    <ClientOnly>
+      <AnimatePresence>
         <Motion
-          as="nav"
-          :variants="{
-            hidden: {},
-            show: {
-              transition: { staggerChildren: 0.06, delayChildren: 0.08 },
-            },
-          }"
-          initial="hidden"
-          animate="show"
-          class="content-container flex flex-1 flex-col justify-center"
+          v-if="mobileNavOpen"
+          data-test-navigation-overlay
+          :initial="{ opacity: 0 }"
+          :animate="{ opacity: 1 }"
+          :exit="{ opacity: 0 }"
+          :transition="{ duration: 0.3, ease: 'easeOut' }"
+          class="fixed inset-0 z-50 flex flex-col bg-foreground text-background"
         >
-          <Motion
-            v-for="(item, i) in config?.navigationLinks"
-            :key="item._key"
-            :variants="{
-              hidden: { opacity: 0, y: 16 },
-              show: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.5, ease: [0.2, 0.7, 0.2, 1] },
-              },
-            }"
-            class="flex items-baseline gap-4 border-b border-background/20 py-3.5"
-          >
-            <span
-              class="w-7 text-[13px] font-semibold tabular-nums text-primary"
-            >
-              {{ String(i + 1).padStart(2, '0') }}
-            </span>
-            <SanityLink
-              v-bind="item.link"
-              class="text-[40px] font-medium leading-none tracking-[-0.02em] text-background no-underline w-full"
+          <div class="content-container grid grid-cols-5 items-center py-4">
+            <SvgIcon class="size-10" />
+
+            <div class="justify-self-center col-span-3">
+              <SvgWordmark class="h-10" />
+            </div>
+
+            <button
+              data-test-navigation-close
+              type="button"
+              aria-label="close menu"
+              class="grid size-11 place-items-center justify-self-end"
               @click="mobileNavOpen = false"
             >
-              {{ item.name }}
-            </SanityLink>
+              <Icon name="tabler:x" size="40" />
+            </button>
+          </div>
+
+          <Motion
+            as="nav"
+            :variants="{
+              hidden: {},
+              show: {
+                transition: { staggerChildren: 0.06, delayChildren: 0.08 },
+              },
+            }"
+            initial="hidden"
+            animate="show"
+            class="content-container flex flex-1 flex-col justify-center"
+          >
+            <Motion
+              v-for="(item, i) in config?.navigationLinks"
+              :key="item._key"
+              :variants="{
+                hidden: { opacity: 0, y: 16 },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.5, ease: [0.2, 0.7, 0.2, 1] },
+                },
+              }"
+              class="flex items-baseline gap-4 border-b border-background/20 py-3.5"
+            >
+              <span
+                class="w-7 text-[13px] font-semibold tabular-nums text-primary"
+              >
+                {{ String(i + 1).padStart(2, '0') }}
+              </span>
+              <SanityLink
+                v-bind="item.link"
+                class="text-[40px] font-medium leading-none tracking-[-0.02em] text-background no-underline w-full"
+                @click="mobileNavOpen = false"
+              >
+                {{ item.name }}
+              </SanityLink>
+            </Motion>
+          </Motion>
+
+          <Motion
+            as="footer"
+            :initial="{ opacity: 0, y: 16 }"
+            :animate="{ opacity: 1, y: 0 }"
+            :transition="{
+              duration: 0.5,
+              delay: 0.46,
+              ease: [0.2, 0.7, 0.2, 1],
+            }"
+            class="content-container flex items-end justify-between border-t border-background/20 pb-9 pt-6"
+          >
+            <NuxtLink
+              v-if="config?.address.link.url && config?.address.name"
+              data-test-navigation-address
+              :to="config.address.link.url"
+              target="_blank"
+              class="text-sm leading-snug text-background"
+            >
+              {{ config?.address?.name }}
+            </NuxtLink>
+
+            <div
+              v-if="config?.instagram || config?.facebook"
+              class="flex gap-4 items-center"
+            >
+              <NuxtLink
+                v-if="config?.instagram"
+                data-test-navigation-instagram
+                :to="config.instagram"
+                target="_blank"
+                aria-label="Instagram"
+                class="text-primary"
+              >
+                <Icon name="tabler:brand-instagram" size="20" />
+              </NuxtLink>
+              <NuxtLink
+                v-if="config?.facebook"
+                data-test-navigation-facebook
+                :to="config.facebook"
+                target="_blank"
+                aria-label="Facebook"
+                class="text-primary"
+              >
+                <Icon name="tabler:brand-facebook" size="20" />
+              </NuxtLink>
+            </div>
           </Motion>
         </Motion>
-
-        <Motion
-          as="footer"
-          :initial="{ opacity: 0, y: 16 }"
-          :animate="{ opacity: 1, y: 0 }"
-          :transition="{ duration: 0.5, delay: 0.46, ease: [0.2, 0.7, 0.2, 1] }"
-          class="content-container flex items-end justify-between border-t border-background/20 pb-9 pt-6"
-        >
-          <NuxtLink
-            v-if="config?.address.link.url && config?.address.name"
-            data-test-navigation-address
-            :to="config.address.link.url"
-            target="_blank"
-            class="text-sm leading-snug text-background"
-          >
-            {{ config?.address?.name }}
-          </NuxtLink>
-
-          <div
-            v-if="config?.instagram || config?.facebook"
-            class="flex gap-4 items-center"
-          >
-            <NuxtLink
-              v-if="config?.instagram"
-              data-test-navigation-instagram
-              :to="config.instagram"
-              target="_blank"
-              aria-label="Instagram"
-              class="text-primary"
-            >
-              <Icon name="tabler:brand-instagram" size="20" />
-            </NuxtLink>
-            <NuxtLink
-              v-if="config?.facebook"
-              data-test-navigation-facebook
-              :to="config.facebook"
-              target="_blank"
-              aria-label="Facebook"
-              class="text-primary"
-            >
-              <Icon name="tabler:brand-facebook" size="20" />
-            </NuxtLink>
-          </div>
-        </Motion>
-      </Motion>
-    </AnimatePresence>
+      </AnimatePresence>
+    </ClientOnly>
   </div>
 </template>
 

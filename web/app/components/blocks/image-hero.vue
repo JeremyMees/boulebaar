@@ -17,6 +17,8 @@ defineProps<BlockMeta & ImageHero & { image: SanityImage }>()
         }"
         :alt="image.altText"
         preload
+        loading="eager"
+        fetchpriority="high"
         class="object-cover w-full h-full"
       />
     </div>
