@@ -17,7 +17,15 @@ const { data } = await useSanityQuery<PageQueryResult>(pageQuery, {
 useSeo(() => data.value?.seo)
 
 watchEffect(() => {
-  navVariant.value = data.value ? 'default' : 'simple'
+  const noData = !data.value
+
+  if (noData) navVariant.value = 'simple'
+
+  const hasHero =
+    data.value?._type === 'page' &&
+    data.value.content?.some(block => block._type === 'imageHero')
+
+  navVariant.value = hasHero ? 'default' : 'simple'
 })
 </script>
 
