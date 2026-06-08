@@ -53,12 +53,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
             v-for="item in config?.navigationLinks"
             :key="item._key"
             v-bind="item.link"
-            class="cursor-pointer font-medium transition-opacity"
-            :class="
-              variant === 'default'
-                ? 'hover:opacity-60'
-                : 'hover:text-background'
-            "
+            class="cursor-pointer hover:opacity-60 font-medium transition-opacity"
           >
             {{ item.name }}
           </SanityLink>
