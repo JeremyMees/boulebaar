@@ -5,6 +5,7 @@ import { vercelProtectionBypassTool } from '@sanity/vercel-protection-bypass'
 import { iconify } from 'sanity-plugin-iconify'
 import { media, mediaAssetSource } from 'sanity-plugin-media'
 import { linkField } from 'sanity-plugin-link-field'
+import { imageAssetPickerPlugin } from 'sanity-plugin-image-asset-picker'
 
 import { schemaTypes } from './schemaTypes'
 import { pageDocumentTypes } from './schemaTypes/page'
@@ -32,6 +33,7 @@ export default defineConfig({
     linkField({
       linkableSchemaTypes: pageDocumentTypes.map(page => page.type),
     }),
+    imageAssetPickerPlugin(),
     vercelProtectionBypassTool(),
   ],
 
