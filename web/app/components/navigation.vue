@@ -47,13 +47,13 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
 
         <nav
           data-test-navigation-links
-          class="hidden justify-end gap-9 md:flex"
+          class="hidden justify-end gap-4 md:flex"
         >
           <SanityLink
             v-for="item in config?.navigationLinks"
             :key="item._key"
             v-bind="item.link"
-            class="cursor-pointer hover:opacity-60 font-medium transition-opacity"
+            class="cursor-pointer hover:opacity-60 font-medium transition-opacity h-10 px-2.5 flex flex-col justify-center"
           >
             {{ item.name }}
           </SanityLink>
