@@ -15,7 +15,7 @@ defineProps<BlockMeta & ImageHero & { image: SanityImage }>()
           ...(image.crop ? { crop: image.crop } : {}),
           ...(image.hotspot ? { hotspot: image.hotspot } : {}),
         }"
-        :alt="image.altText"
+        :alt="stripStega(image.altText)"
         preload
         loading="eager"
         fetchpriority="high"

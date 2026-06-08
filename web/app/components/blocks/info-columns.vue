@@ -22,7 +22,7 @@ defineProps<BlockMeta & InfoColumnsBlock>()
           ...(column.image.crop ? { crop: column.image.crop } : {}),
           ...(column.image.hotspot ? { hotspot: column.image.hotspot } : {}),
         }"
-        :alt="column.image.altText"
+        :alt="stripStega(column.image.altText)"
         sizes="100vw md:50vw lg:33vw"
         class="object-cover w-full aspect-10/12"
       />
