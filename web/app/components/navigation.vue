@@ -41,7 +41,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
           class="mx-auto w-fit col-span-3 md:col-span-1"
           aria-label="home"
         >
-          <SvgWordmark class="h-10" />
+          <SvgWordmark animated class="h-10" />
           <h1 class="sr-only">{{ config?.name ?? '' }}</h1>
         </NuxtLink>
 
