@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Cursor > matches snapshot 1`] = `
+"<div data-test-cursor="" class="pointer-events-none fixed top-0 left-0 z-9999" style="transform: translateX([object Object]) translateY([object Object]);"><svg class="w-5 text-primary" viewBox="0 0 96 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M82.6664 92C82.6664 92 42.7458 43.5467 17.1664 12.5M72.1665 28.5C72.1665 28.5 52.6664 12.5 17.1664 12.5C6.66642 40.5 17.1665 69 17.1665 69" stroke="currentColor" stroke-width="25" stroke-linecap="round"></path>
+  </svg></div>"
+`;

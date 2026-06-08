@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const isMobile = useMediaQuery('(max-width: 767px)')
 const { x, y } = useMouse({ type: 'client', touch: false })
 const { pressed } = useMousePressed()
 const cursorX = useMotionValue(-100)
@@ -11,7 +12,7 @@ const visible = ref(false)
 watch([x, y], ([newX, newY]) => {
   cursorX.set(newX)
   cursorY.set(newY)
-  visible.value = true
+  visible.value = !isMobile.value
 })
 
 useEventListener(document, 'mouseleave', () => (visible.value = false))
@@ -19,7 +20,8 @@ useEventListener(document, 'mouseleave', () => (visible.value = false))
 
 <template>
   <Motion
-    class="pointer-events-none fixed top-0 left-0 z-9999 -translate-y-1/2"
+    data-test-cursor
+    class="pointer-events-none fixed top-0 left-0 z-9999"
     :style="{ x: smoothX, y: smoothY }"
     :animate="{ opacity: visible ? 1 : 0, scale: pressed ? 0.8 : 1 }"
     :transition="{ duration: 0.15 }"
