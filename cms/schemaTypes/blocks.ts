@@ -171,9 +171,38 @@ const menuType = defineType({
   },
 })
 
+const imageGridType = defineType({
+  name: 'imageGrid',
+  title: 'Image Grid',
+  type: 'object',
+  icon: ComponentIcon,
+  fields: [
+    defineField({
+      name: 'images',
+      type: 'array',
+      of: [
+        defineField({
+          name: 'image',
+          type: 'image',
+          validation: rule => rule.required(),
+        }),
+      ],
+      validation: rule => rule.required() && rule.min(1) && rule.max(20),
+    }),
+  ],
+  preview: {
+    prepare() {
+      return {
+        title: 'Image Grid',
+      }
+    },
+  },
+})
+
 export const blockTypes = [
   imageHeroType,
   infoColumnsType,
   menuItemType,
   menuType,
+  imageGridType,
 ]

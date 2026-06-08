@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ImageGrid > matches snapshot 1`] = `
+"<section data-test-image-grid="" class="content-container pt-nav pb-8 md:pb-16">
+  <div class="columns-2 md:columns-3 gap-3 md:gap-4">
+    <div data-test-item="" class="break-inside-avoid mb-3 md:mb-4" viewport="[object Object]" style="opacity: 0; transform: translateY(16px);"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="50vw md:33vw" loading="eager" class="w-full h-auto"></div>
+    <div data-test-item="" class="break-inside-avoid mb-3 md:mb-4" viewport="[object Object]" style="opacity: 0; transform: translateY(16px);"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="50vw md:33vw" loading="eager" class="w-full h-auto"></div>
+    <div data-test-item="" class="break-inside-avoid mb-3 md:mb-4" viewport="[object Object]" style="opacity: 0; transform: translateY(16px);"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="50vw md:33vw" loading="eager" class="w-full h-auto"></div>
+  </div>
+</section>"
+`;

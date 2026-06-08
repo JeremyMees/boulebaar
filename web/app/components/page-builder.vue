@@ -15,6 +15,7 @@ const blockComponents: Record<
   imageHero: resolveComponent('BlocksImageHero'),
   infoColumns: resolveComponent('BlocksInfoColumns'),
   menu: resolveComponent('BlocksMenu'),
+  imageGrid: resolveComponent('BlocksImageGrid'),
 }
 </script>
 

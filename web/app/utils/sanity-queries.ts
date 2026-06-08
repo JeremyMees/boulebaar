@@ -39,6 +39,10 @@ export const pageQuery = groq`
           "image": image { ${imageFragment} },
         }
       },
+       _type == "imageGrid" => {
+        ...,
+        "images": images[]{ ${imageFragment} },
+      },
     },
     "seo": {
       "_type": "seo",
