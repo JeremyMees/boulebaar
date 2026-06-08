@@ -150,4 +150,36 @@
     @apply [&_li]:my-1;
     @apply [&_a]:hover:text-primary [&_a]:border-b [&_a]:border-primary [&_a]:pb-0.5 [&_a]:no-underline [&_a]:transition-colors;
   }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 300ms;
+    animation-timing-function: ease-in-out;
+  }
+
+  ::view-transition-old(root) {
+    animation-name: slide-out-left;
+  }
+
+  ::view-transition-new(root) {
+    animation-name: slide-in-from-right;
+  }
+}
+
+@keyframes slide-out-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
