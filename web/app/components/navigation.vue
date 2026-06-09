@@ -132,6 +132,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
               </span>
               <SanityLink
                 v-bind="item.link"
+                data-test-navigation-overlay-link
                 class="text-[40px] font-medium leading-none tracking-[-0.02em] text-background no-underline w-full"
                 @click="mobileNavOpen = false"
               >

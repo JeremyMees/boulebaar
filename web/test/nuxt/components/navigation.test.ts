@@ -1,18 +1,19 @@
-import { nextTick } from 'vue'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
 import Navigation from '~/components/navigation.vue'
 import { mockConfig } from '~~/test/mock'
 
 let currentConfig = mockConfig
+let isSmallRef = ref(false)
 
 mockNuxtImport('useGlobalConfig', () => () => ({ data: ref(currentConfig) }))
 mockNuxtImport('useWindowScroll', () => () => ({ y: ref(0) }))
-mockNuxtImport('useMediaQuery', () => () => ref(false))
+mockNuxtImport('useMediaQuery', () => () => isSmallRef)
 
 describe('Navigation', () => {
   beforeEach(() => {
     currentConfig = mockConfig
+    isSmallRef = ref(false)
   })
 
   it('matches snapshot', async () => {
@@ -161,5 +162,29 @@ describe('Navigation', () => {
     await wrapper.find('[data-test-navigation-open]').trigger('click')
 
     expect(wrapper.find('[data-test-navigation-facebook]').exists()).toBe(false)
+  })
+
+  it('closes the overlay when a nav link in the overlay is clicked', async () => {
+    const wrapper = await mountSuspended(Navigation)
+
+    await wrapper.find('[data-test-navigation-open]').trigger('click')
+    expect(wrapper.find('[data-test-navigation-overlay]').exists()).toBe(true)
+
+    await wrapper.find('[data-test-navigation-overlay-link]').trigger('click')
+
+    expect(wrapper.find('[data-test-navigation-overlay]').exists()).toBe(false)
+  })
+
+  it('closes the mobile overlay when the screen becomes wide', async () => {
+    isSmallRef = ref(true)
+
+    const wrapper = await mountSuspended(Navigation)
+    await wrapper.find('[data-test-navigation-open]').trigger('click')
+    expect(wrapper.find('[data-test-navigation-overlay]').exists()).toBe(true)
+
+    isSmallRef.value = false
+    await nextTick()
+
+    expect(wrapper.find('[data-test-navigation-overlay]').exists()).toBe(false)
   })
 })

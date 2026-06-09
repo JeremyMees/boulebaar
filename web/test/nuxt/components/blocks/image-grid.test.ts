@@ -1,7 +1,11 @@
-import { describe, expect, it } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
+import { describe, expect, it, beforeEach } from 'vitest'
+import { mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
 import ImageGrid from '~/components/blocks/image-grid.vue'
 import { mockImage } from '~~/test/mock'
+
+let isMobileRef = ref(false)
+
+mockNuxtImport('useMediaQuery', () => () => isMobileRef)
 
 const props = {
   documentId: 'doc-1',
@@ -10,6 +14,10 @@ const props = {
 }
 
 describe('ImageGrid', () => {
+  beforeEach(() => {
+    isMobileRef = ref(false)
+  })
+
   it('matches snapshot', async () => {
     const wrapper = await mountSuspended(ImageGrid, { props })
 
@@ -95,5 +103,37 @@ describe('ImageGrid', () => {
     })
 
     expect(wrapper.findAll('[data-test-item]')).toHaveLength(0)
+  })
+
+  it('distributes images into 2 columns on mobile', async () => {
+    isMobileRef = ref(true)
+    const images = Array.from({ length: 4 }, () => mockImage)
+    const wrapper = await mountSuspended(ImageGrid, {
+      props: { ...props, images },
+    })
+
+    expect(wrapper.findAll('[data-test-item]')).toHaveLength(4)
+    isMobileRef = ref(false)
+  })
+
+  it('renders images without crop or hotspot', async () => {
+    const imageNoCropNoHotspot = {
+      ...mockImage,
+      crop: undefined,
+      hotspot: undefined,
+    }
+    const wrapper = await mountSuspended(ImageGrid, {
+      props: { ...props, images: [imageNoCropNoHotspot] },
+    })
+
+    expect(wrapper.find('[data-test-image]').exists()).toBe(true)
+  })
+
+  it('does not render an image for null entries in the images array', async () => {
+    const wrapper = await mountSuspended(ImageGrid, {
+      props: { ...props, images: [null as unknown as SanityImage] },
+    })
+
+    expect(wrapper.find('[data-test-image]').exists()).toBe(false)
   })
 })

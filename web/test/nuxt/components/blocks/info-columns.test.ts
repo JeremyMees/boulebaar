@@ -123,4 +123,28 @@ describe('InfoColumns', () => {
 
     expect(wrapper.find('[data-test-opening-hours]').exists()).toBe(true)
   })
+
+  it('renders a column image without crop or hotspot', async () => {
+    const columnNoCropNoHotspot = {
+      ...textColumn,
+      image: { ...mockImage, crop: undefined, hotspot: undefined },
+    }
+    const wrapper = await mountSuspended(InfoColumns, {
+      props: { ...props, columns: [columnNoCropNoHotspot] },
+    })
+
+    expect(wrapper.find('[data-test-image]').exists()).toBe(true)
+  })
+
+  it('renders a column image without altText', async () => {
+    const columnNoAlt = {
+      ...textColumn,
+      image: { ...mockImage, altText: undefined },
+    }
+    const wrapper = await mountSuspended(InfoColumns, {
+      props: { ...props, columns: [columnNoAlt] },
+    })
+
+    expect(wrapper.find('[data-test-image]').exists()).toBe(true)
+  })
 })

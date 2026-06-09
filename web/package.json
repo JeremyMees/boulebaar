@@ -15,6 +15,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest",
+    "test:coverage": "vitest --coverage",
     "deps": "npx taze -w"
   },
   "dependencies": {
@@ -46,6 +47,7 @@
     "@nuxt/test-utils": "^4.0.3",
     "@tailwindcss/vite": "^4.3.0",
     "@types/node": "^25.9.2",
+    "@vitest/coverage-v8": "4.1.8",
     "@vue/test-utils": "^2.4.11",
     "happy-dom": "^20.10.1",
     "tailwindcss": "^4.3.0",

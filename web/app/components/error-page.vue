@@ -4,6 +4,7 @@ const { data } = await useGlobalConfig()
 
 <template>
   <section
+    data-test-error-page
     class="content-container pt-nav flex w-full max-w-prose flex-1 flex-col items-center justify-center text-center"
   >
     <p aria-hidden="true" class="eyebrow text-accent">foutmelding</p>
@@ -37,6 +38,7 @@ const { data } = await useGlobalConfig()
 
     <div
       v-if="data?.email"
+      data-test-error-email
       class="mt-14 w-full border-t pt-7 text-muted-foreground"
     >
       iets kwijt of een vraag? mail ons op

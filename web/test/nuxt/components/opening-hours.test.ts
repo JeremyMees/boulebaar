@@ -102,6 +102,16 @@ describe('OpeningHours', () => {
     expect(wrapper.find('[data-test-opening-hours-cta]').exists()).toBe(false)
   })
 
+  it('passes a custom class to the list element', async () => {
+    const wrapper = await mountSuspended(OpeningHours, {
+      props: { class: 'my-custom-class' },
+    })
+
+    expect(wrapper.find('[data-test-opening-hours]').classes()).toContain(
+      'my-custom-class',
+    )
+  })
+
   it('renders cta when showCta is true and config has cta', async () => {
     currentConfig = {
       ...mockConfig,

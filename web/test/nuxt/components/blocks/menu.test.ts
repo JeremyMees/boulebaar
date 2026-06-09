@@ -125,4 +125,16 @@ describe('Menu', () => {
 
     expect(wrapper.find('[data-test-vegan]').exists()).toBe(false)
   })
+
+  it('renders a block section with no items', async () => {
+    const wrapper = await mountSuspended(Menu, {
+      props: {
+        ...props,
+        menuBlock: [{ ...menuSection, items: [] }],
+      },
+    })
+
+    expect(wrapper.find('[data-test-block]').exists()).toBe(true)
+    expect(wrapper.findAll('[data-test-block-column-item]')).toHaveLength(0)
+  })
 })

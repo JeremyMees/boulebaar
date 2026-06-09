@@ -87,7 +87,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Run unit tests
-        run: pnpm --filter ./web run test --run
+        run: pnpm --filter ./web run test:coverage --run
 
   deploy:
     name: Deploying

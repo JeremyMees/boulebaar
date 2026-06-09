@@ -56,4 +56,24 @@ describe('Richtext', () => {
 
     expect(wrapper.html()).not.toBe('')
   })
+
+  it('renders an inlineLink as a SanityLink with the label text', async () => {
+    const inlineLinkValue = [
+      {
+        _type: 'inlineLink' as const,
+        _key: 'link-1',
+        link: {
+          _type: 'link' as const,
+          url: 'https://example.com',
+        },
+        label: 'Click here',
+      },
+    ]
+
+    const wrapper = await mountSuspended(Richtext, {
+      props: { value: inlineLinkValue },
+    })
+
+    expect(wrapper.text()).toContain('Click here')
+  })
 })

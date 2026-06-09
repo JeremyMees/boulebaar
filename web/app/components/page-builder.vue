@@ -21,7 +21,11 @@ const blockComponents: Record<
 
 <template>
   <template v-if="Array.isArray(content)">
-    <div v-for="block in content" :key="block._key">
+    <div
+      v-for="block in content"
+      :key="block._key"
+      data-test-page-builder-block
+    >
       <component
         :is="blockComponents[block._type] ?? 'div'"
         v-bind="block"

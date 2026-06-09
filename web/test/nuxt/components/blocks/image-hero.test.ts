@@ -61,4 +61,26 @@ describe('ImageHero', () => {
       'Mock richtext content',
     )
   })
+
+  it('renders image without crop or hotspot', async () => {
+    const imageNoCropNoHotspot = {
+      ...mockImage,
+      crop: undefined,
+      hotspot: undefined,
+    }
+    const wrapper = await mountSuspended(ImageHero, {
+      props: { ...props, image: imageNoCropNoHotspot },
+    })
+
+    expect(wrapper.find('[data-test-image]').exists()).toBe(true)
+  })
+
+  it('renders image without altText', async () => {
+    const imageNoAlt = { ...mockImage, altText: undefined }
+    const wrapper = await mountSuspended(ImageHero, {
+      props: { ...props, image: imageNoAlt },
+    })
+
+    expect(wrapper.find('[data-test-image]').exists()).toBe(true)
+  })
 })
