@@ -65,27 +65,27 @@ describe('ImageGrid', () => {
     expect(src).toContain('abc123-800x600')
   })
 
-  it('loads the first 6 images eagerly', async () => {
-    const images = Array.from({ length: 8 }, () => mockImage)
+  it('loads the first 2 images in each column eagerly', async () => {
+    const images = Array.from({ length: 9 }, () => mockImage)
     const wrapper = await mountSuspended(ImageGrid, {
       props: { ...props, images },
     })
     const allImages = wrapper.findAll('[data-test-image]')
 
-    allImages.slice(0, 6).forEach(img => {
-      expect(img.attributes('loading')).toBe('eager')
+    ;[0, 1, 3, 4, 6, 7].forEach(i => {
+      expect(allImages[i]?.attributes('loading')).toBe('eager')
     })
   })
 
-  it('loads images from index 6 onward lazily', async () => {
-    const images = Array.from({ length: 8 }, () => mockImage)
+  it('loads images beyond the first 2 in each column lazily', async () => {
+    const images = Array.from({ length: 9 }, () => mockImage)
     const wrapper = await mountSuspended(ImageGrid, {
       props: { ...props, images },
     })
     const allImages = wrapper.findAll('[data-test-image]')
 
-    allImages.slice(6).forEach(img => {
-      expect(img.attributes('loading')).toBe('lazy')
+    ;[2, 5, 8].forEach(i => {
+      expect(allImages[i]?.attributes('loading')).toBe('lazy')
     })
   })
 
