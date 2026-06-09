@@ -48,6 +48,24 @@ defineProps<BlockMeta & Menu>()
             <small v-if="item.ingredients" data-test-item-description>
               {{ item.ingredients }}
             </small>
+            <div
+              v-if="item.extras?.length"
+              data-test-extras
+              class="flex flex-col gap-0.5"
+            >
+              <span
+                v-for="(extra, extraIndex) in item.extras"
+                :key="extraIndex"
+                data-test-extra
+                class="h5 flex items-center gap-2"
+              >
+                <Icon name="tabler:plus" />
+                <span data-test-extra-name>{{ extra.name }}</span>
+                <span v-if="extra.price" data-test-extra-price class="ml-2">{{
+                  extra.price
+                }}</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>

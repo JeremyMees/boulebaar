@@ -13,6 +13,7 @@ exports[`Menu > matches snapshot 1`] = `
               <!--v-if-->
             </h4><small data-test-item-price="">€8</small>
           </div><small data-test-item-description="">Ham, cheese, bread</small>
+          <!--v-if-->
         </div>
       </div>
       <div data-test-block-column="" class="flex flex-col gap-4">
@@ -20,6 +21,7 @@ exports[`Menu > matches snapshot 1`] = `
           <div class="flex items-center justify-between">
             <h4 data-test-item-name="" class="relative">Avocado toast <span data-test-vegan="" class="absolute top-0 -right-4 text-xs font-bold"> vg </span></h4><small data-test-item-price="">€9</small>
           </div>
+          <!--v-if-->
           <!--v-if-->
         </div>
       </div>

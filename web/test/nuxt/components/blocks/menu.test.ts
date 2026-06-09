@@ -11,6 +11,23 @@ const menuItem = {
   vegan: false,
 }
 
+const itemWithExtras = {
+  _key: 'item-3',
+  _type: 'menuItem' as const,
+  name: 'Pasta',
+  price: '€12',
+  vegan: false,
+  extras: [
+    {
+      _type: 'option' as const,
+      _key: 'extra-1',
+      name: 'Extra cheese',
+      price: '€1.5',
+    },
+    { _type: 'option' as const, _key: 'extra-2', name: 'Extra sauce' },
+  ],
+}
+
 const veganItem = {
   _key: 'item-2',
   _type: 'menuItem' as const,
@@ -136,5 +153,75 @@ describe('Menu', () => {
 
     expect(wrapper.find('[data-test-block]').exists()).toBe(true)
     expect(wrapper.findAll('[data-test-block-column-item]')).toHaveLength(0)
+  })
+
+  it('does not render extras when item has none', async () => {
+    const wrapper = await mountSuspended(Menu, { props })
+
+    expect(wrapper.find('[data-test-extras]').exists()).toBe(false)
+  })
+
+  it('renders extras section when item has extras', async () => {
+    const wrapper = await mountSuspended(Menu, {
+      props: {
+        ...props,
+        menuBlock: [{ ...menuSection, items: [itemWithExtras] }],
+      },
+    })
+
+    expect(wrapper.find('[data-test-extras]').exists()).toBe(true)
+  })
+
+  it('renders one row per extra', async () => {
+    const wrapper = await mountSuspended(Menu, {
+      props: {
+        ...props,
+        menuBlock: [{ ...menuSection, items: [itemWithExtras] }],
+      },
+    })
+
+    expect(wrapper.findAll('[data-test-extra]')).toHaveLength(
+      itemWithExtras.extras.length,
+    )
+  })
+
+  it('renders extra names', async () => {
+    const wrapper = await mountSuspended(Menu, {
+      props: {
+        ...props,
+        menuBlock: [{ ...menuSection, items: [itemWithExtras] }],
+      },
+    })
+
+    const names = wrapper.findAll('[data-test-extra-name]').map(el => el.text())
+
+    expect(names).toContain('Extra cheese')
+    expect(names).toContain('Extra sauce')
+  })
+
+  it('renders extra price when present', async () => {
+    const wrapper = await mountSuspended(Menu, {
+      props: {
+        ...props,
+        menuBlock: [{ ...menuSection, items: [itemWithExtras] }],
+      },
+    })
+
+    const prices = wrapper
+      .findAll('[data-test-extra-price]')
+      .map(el => el.text().trim())
+
+    expect(prices).toContain('€1.5')
+  })
+
+  it('does not render price element when extra has no price', async () => {
+    const wrapper = await mountSuspended(Menu, {
+      props: {
+        ...props,
+        menuBlock: [{ ...menuSection, items: [itemWithExtras] }],
+      },
+    })
+
+    expect(wrapper.findAll('[data-test-extra-price]')).toHaveLength(1)
   })
 })
