@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { splitInHalf } from '~/utils/array'
+import { distributeIntoColumns, splitInHalf } from '~/utils/array'
 
 describe('splitInHalf', () => {
   it('splits an even array into two equal halves', () => {
@@ -44,5 +44,47 @@ describe('splitInHalf', () => {
     expect(first).toHaveLength(2)
     expect(second).toHaveLength(1)
     expect(first[0]).toBe(items[0])
+  })
+})
+
+describe('distributeIntoColumns', () => {
+  it('distributes items round-robin so each column starts with the earliest items', () => {
+    const cols = distributeIntoColumns([1, 2, 3, 4, 5, 6], 3)
+
+    expect(cols[0]).toEqual([1, 4])
+    expect(cols[1]).toEqual([2, 5])
+    expect(cols[2]).toEqual([3, 6])
+  })
+
+  it('handles uneven distribution by putting extra items in the first columns', () => {
+    const cols = distributeIntoColumns([1, 2, 3, 4, 5], 3)
+
+    expect(cols[0]).toEqual([1, 4])
+    expect(cols[1]).toEqual([2, 5])
+    expect(cols[2]).toEqual([3])
+  })
+
+  it('returns empty columns for an empty array', () => {
+    const cols = distributeIntoColumns([], 3)
+
+    expect(cols).toHaveLength(3)
+    expect(cols.every(c => c.length === 0)).toBe(true)
+  })
+
+  it('works with 2 columns', () => {
+    const cols = distributeIntoColumns([1, 2, 3, 4], 2)
+
+    expect(cols[0]).toEqual([1, 3])
+    expect(cols[1]).toEqual([2, 4])
+    expect(cols[2]).toBeUndefined()
+  })
+
+  it('preserves object references', () => {
+    const items = [{ id: 1 }, { id: 2 }, { id: 3 }]
+    const cols = distributeIntoColumns(items, 2)
+
+    expect(cols[0][0]).toBe(items[0])
+    expect(cols[1][0]).toBe(items[1])
+    expect(cols[0][1]).toBe(items[2])
   })
 })
