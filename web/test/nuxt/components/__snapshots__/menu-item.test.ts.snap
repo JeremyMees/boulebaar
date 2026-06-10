@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MenuItem > matches snapshot 1`] = `
+"<div data-test-menu-item="" class="flex flex-col gap-0.5">
+  <div class="flex items-center justify-between">
+    <h4 data-test-item-name="" class="relative">Croque monsieur
+      <!--v-if-->
+    </h4><small data-test-item-price="">€8</small>
+  </div><small data-test-item-description="">Ham, cheese, bread</small>
+  <!--v-if-->
+</div>"
+`;
