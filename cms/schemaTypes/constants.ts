@@ -1,6 +1,10 @@
 import { blockTypes } from './blocks'
 
-const blockBlacklist = ['menuItem'] as const
+const blockBlacklist = [
+  'menuItem',
+  'accordionMenuSubSection',
+  'accordionMenuSection',
+] as const
 type BlacklistedBlock = (typeof blockBlacklist)[number]
 
 export type BlockTypeName = Exclude<

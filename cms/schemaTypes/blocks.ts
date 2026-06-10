@@ -78,6 +78,44 @@ const infoColumnsType = defineType({
   },
 })
 
+const accordionMenuSubSectionType = defineType({
+  name: 'accordionMenuSubSection',
+  title: 'Accordion Menu Sub Section',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'title',
+      type: 'string',
+      validation: rule => rule.required(),
+    }),
+    defineField({
+      name: 'items',
+      type: 'array',
+      of: [{ type: 'menuItem' }],
+      validation: rule => rule.required() && rule.min(1) && rule.max(50),
+    }),
+  ],
+})
+
+const accordionMenuSectionType = defineType({
+  name: 'accordionMenuSection',
+  title: 'Accordion Menu Section',
+  type: 'object',
+  fields: [
+    defineField({
+      name: 'title',
+      type: 'string',
+      validation: rule => rule.required(),
+    }),
+    defineField({
+      name: 'subSections',
+      type: 'array',
+      of: [{ type: 'accordionMenuSubSection' }],
+      validation: rule => rule.required() && rule.min(1) && rule.max(10),
+    }),
+  ],
+})
+
 const menuItemType = defineType({
   name: 'menuItem',
   title: 'Menu Item',
@@ -155,10 +193,13 @@ const menuType = defineType({
               type: 'array',
               of: [{ type: 'menuItem' }],
               validation: rule =>
-                rule.required() && rule.min(1) && rule.max(10),
+                rule.required() && rule.min(1) && rule.max(50),
             }),
           ],
         }),
+        {
+          type: 'accordionMenuSection',
+        },
       ],
       validation: rule => rule.required() && rule.min(1) && rule.max(10),
     }),
@@ -204,6 +245,8 @@ export const blockTypes = [
   imageHeroType,
   infoColumnsType,
   menuItemType,
+  accordionMenuSubSectionType,
+  accordionMenuSectionType,
   menuType,
   imageGridType,
 ]

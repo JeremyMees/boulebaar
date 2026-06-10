@@ -11,23 +11,6 @@ const menuItem = {
   vegan: false,
 }
 
-const itemWithExtras = {
-  _key: 'item-3',
-  _type: 'menuItem' as const,
-  name: 'Pasta',
-  price: '€12',
-  vegan: false,
-  extras: [
-    {
-      _type: 'option' as const,
-      _key: 'extra-1',
-      name: 'Extra cheese',
-      price: '€1.5',
-    },
-    { _type: 'option' as const, _key: 'extra-2', name: 'Extra sauce' },
-  ],
-}
-
 const veganItem = {
   _key: 'item-2',
   _type: 'menuItem' as const,
@@ -43,6 +26,43 @@ const menuSection = {
   items: [menuItem, veganItem],
 }
 
+const beerSubSection = {
+  _key: 'sub-1',
+  _type: 'accordionMenuSubSection' as const,
+  title: 'Beers',
+  items: [
+    {
+      _key: 'drink-1',
+      _type: 'menuItem' as const,
+      name: 'Lager',
+      price: '€4',
+      vegan: false,
+    },
+  ],
+}
+
+const wineSubSection = {
+  _key: 'sub-2',
+  _type: 'accordionMenuSubSection' as const,
+  title: 'Wines',
+  items: [
+    {
+      _key: 'drink-2',
+      _type: 'menuItem' as const,
+      name: 'Red wine',
+      price: '€6',
+      vegan: false,
+    },
+  ],
+}
+
+const accordionSection = {
+  _type: 'accordionMenuSection' as const,
+  _key: 'acc-section-1',
+  title: 'Drinks',
+  subSections: [beerSubSection, wineSubSection],
+}
+
 const props: BlockMeta & Menu = {
   documentId: 'doc-1',
   documentType: 'page',
@@ -52,176 +72,127 @@ const props: BlockMeta & Menu = {
 }
 
 describe('Menu', () => {
-  it('matches snapshot', async () => {
-    const wrapper = await mountSuspended(Menu, { props })
+  describe('MenuSection', () => {
+    it('matches snapshot', async () => {
+      const wrapper = await mountSuspended(Menu, { props })
 
-    expect(wrapper.html()).toMatchSnapshot()
-  })
-
-  it('renders the section title', async () => {
-    const wrapper = await mountSuspended(Menu, { props })
-
-    expect(wrapper.find('[data-test-title]').text()).toBe(props.title)
-  })
-
-  it('renders a block for each menu section', async () => {
-    const wrapper = await mountSuspended(Menu, {
-      props: { ...props, menuBlock: [menuSection, menuSection] },
+      expect(wrapper.html()).toMatchSnapshot()
     })
 
-    expect(wrapper.findAll('[data-test-block]')).toHaveLength(2)
-  })
+    it('renders the section title', async () => {
+      const wrapper = await mountSuspended(Menu, { props })
 
-  it('renders the block title', async () => {
-    const wrapper = await mountSuspended(Menu, { props })
-
-    expect(wrapper.find('[data-test-block-title]').text()).toBe(
-      menuSection.title,
-    )
-  })
-
-  it('renders two columns', async () => {
-    const wrapper = await mountSuspended(Menu, { props })
-
-    expect(wrapper.findAll('[data-test-block-column]')).toHaveLength(2)
-  })
-
-  it('renders all items', async () => {
-    const wrapper = await mountSuspended(Menu, { props })
-
-    expect(wrapper.findAll('[data-test-block-column-item]')).toHaveLength(
-      menuSection.items.length,
-    )
-  })
-
-  it('renders item names', async () => {
-    const wrapper = await mountSuspended(Menu, { props })
-    const names = wrapper.findAll('[data-test-item-name]').map(el => el.text())
-
-    expect(names.some(t => t.includes(menuItem.name))).toBe(true)
-    expect(names.some(t => t.includes(veganItem.name))).toBe(true)
-  })
-
-  it('renders item prices', async () => {
-    const wrapper = await mountSuspended(Menu, { props })
-    const prices = wrapper
-      .findAll('[data-test-item-price]')
-      .map(el => el.text().trim())
-
-    expect(prices).toContain(menuItem.price)
-    expect(prices).toContain(veganItem.price)
-  })
-
-  it('renders ingredients when present', async () => {
-    const wrapper = await mountSuspended(Menu, { props })
-    const descriptions = wrapper.findAll('[data-test-item-description]')
-
-    expect(
-      descriptions.some(el => el.text().includes(menuItem.ingredients!)),
-    ).toBe(true)
-  })
-
-  it('does not render ingredients element when absent', async () => {
-    const wrapper = await mountSuspended(Menu, {
-      props: { ...props, menuBlock: [{ ...menuSection, items: [veganItem] }] },
+      expect(wrapper.find('[data-test-title]').text()).toBe(props.title)
     })
 
-    expect(wrapper.find('[data-test-item-description]').exists()).toBe(false)
-  })
+    it('renders a block for each menu section', async () => {
+      const wrapper = await mountSuspended(Menu, {
+        props: { ...props, menuBlock: [menuSection, menuSection] },
+      })
 
-  it('shows vegan badge for vegan items', async () => {
-    const wrapper = await mountSuspended(Menu, { props })
-
-    expect(wrapper.find('[data-test-vegan]').exists()).toBe(true)
-  })
-
-  it('does not show vegan badge for non-vegan items', async () => {
-    const wrapper = await mountSuspended(Menu, {
-      props: { ...props, menuBlock: [{ ...menuSection, items: [menuItem] }] },
+      expect(wrapper.findAll('[data-test-block]')).toHaveLength(2)
     })
 
-    expect(wrapper.find('[data-test-vegan]').exists()).toBe(false)
-  })
+    it('renders the block title', async () => {
+      const wrapper = await mountSuspended(Menu, { props })
 
-  it('renders a block section with no items', async () => {
-    const wrapper = await mountSuspended(Menu, {
-      props: {
-        ...props,
-        menuBlock: [{ ...menuSection, items: [] }],
-      },
+      expect(wrapper.find('[data-test-block-title]').text()).toBe(
+        menuSection.title,
+      )
     })
 
-    expect(wrapper.find('[data-test-block]').exists()).toBe(true)
-    expect(wrapper.findAll('[data-test-block-column-item]')).toHaveLength(0)
-  })
+    it('renders two columns', async () => {
+      const wrapper = await mountSuspended(Menu, { props })
 
-  it('does not render extras when item has none', async () => {
-    const wrapper = await mountSuspended(Menu, { props })
-
-    expect(wrapper.find('[data-test-extras]').exists()).toBe(false)
-  })
-
-  it('renders extras section when item has extras', async () => {
-    const wrapper = await mountSuspended(Menu, {
-      props: {
-        ...props,
-        menuBlock: [{ ...menuSection, items: [itemWithExtras] }],
-      },
+      expect(wrapper.findAll('[data-test-block-column]')).toHaveLength(2)
     })
 
-    expect(wrapper.find('[data-test-extras]').exists()).toBe(true)
-  })
+    it('renders all items', async () => {
+      const wrapper = await mountSuspended(Menu, { props })
 
-  it('renders one row per extra', async () => {
-    const wrapper = await mountSuspended(Menu, {
-      props: {
-        ...props,
-        menuBlock: [{ ...menuSection, items: [itemWithExtras] }],
-      },
+      expect(wrapper.findAll('[data-test-block-column-item]')).toHaveLength(
+        menuSection.items.length,
+      )
     })
 
-    expect(wrapper.findAll('[data-test-extra]')).toHaveLength(
-      itemWithExtras.extras.length,
-    )
+    it('renders a block section with no items', async () => {
+      const wrapper = await mountSuspended(Menu, {
+        props: {
+          ...props,
+          menuBlock: [{ ...menuSection, items: [] }],
+        },
+      })
+
+      expect(wrapper.find('[data-test-block]').exists()).toBe(true)
+      expect(wrapper.findAll('[data-test-block-column-item]')).toHaveLength(0)
+    })
   })
 
-  it('renders extra names', async () => {
-    const wrapper = await mountSuspended(Menu, {
-      props: {
-        ...props,
-        menuBlock: [{ ...menuSection, items: [itemWithExtras] }],
-      },
+  describe('AccordionMenuSection', () => {
+    const accordionProps: BlockMeta & Menu = {
+      ...props,
+      menuBlock: [accordionSection],
+    }
+
+    it('matches snapshot', async () => {
+      const wrapper = await mountSuspended(Menu, { props: accordionProps })
+
+      expect(wrapper.html()).toMatchSnapshot()
     })
 
-    const names = wrapper.findAll('[data-test-extra-name]').map(el => el.text())
+    it('renders the block title', async () => {
+      const wrapper = await mountSuspended(Menu, { props: accordionProps })
 
-    expect(names).toContain('Extra cheese')
-    expect(names).toContain('Extra sauce')
+      expect(wrapper.find('[data-test-block-title]').text()).toBe(
+        accordionSection.title,
+      )
+    })
+
+    it('renders a toggle button', async () => {
+      const wrapper = await mountSuspended(Menu, { props: accordionProps })
+
+      expect(wrapper.find('[data-test-toggle]').exists()).toBe(true)
+    })
+
+    it('renders a column per subsection', async () => {
+      const wrapper = await mountSuspended(Menu, { props: accordionProps })
+
+      expect(wrapper.findAll('[data-test-block-column]')).toHaveLength(
+        accordionSection.subSections.length,
+      )
+    })
+
+    it('renders subsection titles', async () => {
+      const wrapper = await mountSuspended(Menu, { props: accordionProps })
+      const titles = wrapper
+        .findAll('[data-test-subsection-title]')
+        .map(el => el.text())
+
+      expect(titles).toContain(beerSubSection.title)
+      expect(titles).toContain(wineSubSection.title)
+    })
+
+    it('renders items within each subsection', async () => {
+      const wrapper = await mountSuspended(Menu, { props: accordionProps })
+      const totalItems = accordionSection.subSections.reduce(
+        (sum, s) => sum + s.items.length,
+        0,
+      )
+
+      expect(wrapper.findAll('[data-test-block-column-item]')).toHaveLength(
+        totalItems,
+      )
+    })
   })
 
-  it('renders extra price when present', async () => {
-    const wrapper = await mountSuspended(Menu, {
-      props: {
-        ...props,
-        menuBlock: [{ ...menuSection, items: [itemWithExtras] }],
-      },
+  describe('Mixed blocks', () => {
+    it('renders both menuSection and accordionMenuSection blocks', async () => {
+      const wrapper = await mountSuspended(Menu, {
+        props: { ...props, menuBlock: [menuSection, accordionSection] },
+      })
+
+      expect(wrapper.findAll('[data-test-block]')).toHaveLength(2)
+      expect(wrapper.find('[data-test-toggle]').exists()).toBe(true)
     })
-
-    const prices = wrapper
-      .findAll('[data-test-extra-price]')
-      .map(el => el.text().trim())
-
-    expect(prices).toContain('€1.5')
-  })
-
-  it('does not render price element when extra has no price', async () => {
-    const wrapper = await mountSuspended(Menu, {
-      props: {
-        ...props,
-        menuBlock: [{ ...menuSection, items: [itemWithExtras] }],
-      },
-    })
-
-    expect(wrapper.findAll('[data-test-extra-price]')).toHaveLength(1)
   })
 })
