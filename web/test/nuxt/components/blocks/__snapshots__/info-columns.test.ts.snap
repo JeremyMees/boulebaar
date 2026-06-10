@@ -2,20 +2,12 @@
 
 exports[`InfoColumns > matches snapshot 1`] = `
 "<section data-test-info-columns="" class="content-container py-8 md:py-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-  <div class="flex flex-col gap-6 md:gap-10">
-    <!--v-if-->
+  <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="100vw md:50vw lg:33vw" class="object-cover w-full aspect-10/12">
     <div data-test-content="" class="flex flex-col gap-2">
-      <p class="font-semibold">Opening hours title</p>
-      <ul id="visit" data-test-opening-hours="" class="w-full">
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">ma</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">di</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">wo</span><span data-test-opening-hours-value="">gesloten</span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">do</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">vr</span><span data-test-opening-hours-value="">12:00 - 00:00</span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">za</span><span data-test-opening-hours-value="">10:00 - 00:00</span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">zo</span><span data-test-opening-hours-value="">gesloten</span></li>
-        <!--v-if-->
-      </ul>
+      <p class="font-semibold">Text column title</p>
+      <div data-test-text="" class="[&amp;_p]:text-sm [&amp;_p]:leading-[1.55] [&amp;_p]:text-muted-foreground">
+        <p>Mock richtext content</p>
+      </div>
     </div>
   </div>
   <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="100vw md:50vw lg:33vw" class="object-cover w-full aspect-10/12">

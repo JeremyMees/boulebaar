@@ -15,18 +15,11 @@ const textColumn = {
   image: mockImage,
 }
 
-const openingHoursColumn = {
-  _type: 'openingHoursColumn' as const,
-  _key: 'col-2',
-  title: 'Opening hours title',
-  image: null,
-}
-
 const props = {
   documentId: 'doc-1',
   documentType: 'page',
   _type: 'infoColumns' as const,
-  columns: [openingHoursColumn, textColumn, textColumn],
+  columns: [textColumn, textColumn, textColumn],
 }
 
 describe('InfoColumns', () => {
@@ -114,14 +107,6 @@ describe('InfoColumns', () => {
     expect(wrapper.find('[data-test-content]').text()).not.toContain(
       'Mock richtext content',
     )
-  })
-
-  it('renders the opening hours component', async () => {
-    const wrapper = await mountSuspended(InfoColumns, {
-      props: { ...props, columns: [openingHoursColumn] },
-    })
-
-    expect(wrapper.find('[data-test-opening-hours]').exists()).toBe(true)
   })
 
   it('renders a column image without crop or hotspot', async () => {

@@ -66,25 +66,6 @@ const infoColumnsType = defineType({
             }),
           ],
         }),
-        defineField({
-          name: 'openingHoursColumn',
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'title',
-              type: 'string',
-              validation: rule => rule.required(),
-            }),
-            defineField({
-              name: 'image',
-              type: 'image',
-              options: {
-                hotspot: true,
-              },
-              validation: rule => rule.required(),
-            }),
-          ],
-        }),
       ],
       validation: rule => rule.required() && rule.min(1) && rule.max(3),
     }),

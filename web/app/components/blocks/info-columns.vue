@@ -28,13 +28,8 @@ defineProps<BlockMeta & InfoColumnsBlock>()
       />
       <div data-test-content class="flex flex-col gap-2">
         <p class="font-semibold">{{ column.title }}</p>
-        <OpeningHours
-          v-if="column._type === 'openingHoursColumn'"
-          show-cta
-          data-test-opening-hours
-        />
         <div
-          v-else-if="column._type === 'textColumn' && column.text"
+          v-if="column.text"
           data-test-text
           class="[&_p]:text-sm [&_p]:leading-[1.55] [&_p]:text-muted-foreground"
         >
