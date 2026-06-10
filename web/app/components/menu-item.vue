@@ -5,7 +5,7 @@ defineProps<{ item: MenuItem }>()
 <template>
   <div data-test-menu-item class="flex flex-col gap-0.5">
     <div class="flex items-center justify-between">
-      <h5 data-test-item-name class="relative">
+      <p data-test-item-name class="relative h5">
         {{ item.name }}
         <span
           v-if="item.vegan"
@@ -14,7 +14,7 @@ defineProps<{ item: MenuItem }>()
         >
           vg
         </span>
-      </h5>
+      </p>
       <small data-test-item-price>
         {{ item.price }}
       </small>

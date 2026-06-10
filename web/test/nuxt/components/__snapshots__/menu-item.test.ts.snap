@@ -3,9 +3,9 @@
 exports[`MenuItem > matches snapshot 1`] = `
 "<div data-test-menu-item="" class="flex flex-col gap-0.5">
   <div class="flex items-center justify-between">
-    <h5 data-test-item-name="" class="relative">Croque monsieur
+    <p data-test-item-name="" class="relative h5">Croque monsieur
       <!--v-if-->
-    </h5><small data-test-item-price="">€8</small>
+    </p><small data-test-item-price="">€8</small>
   </div><small data-test-item-description="">Ham, cheese, bread</small>
   <!--v-if-->
 </div>"
