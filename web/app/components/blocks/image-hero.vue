@@ -28,12 +28,18 @@ defineProps<BlockMeta & ImageHero & { image: SanityImage }>()
       class="content-container py-8 md:pt-16 flex justify-between gap-10"
     >
       <div class="flex flex-col gap-6">
-        <div class="w-14 h-0.5 bg-foreground" />
-        <div class="richtext max-w-prose">
-          <Richtext :value="text" />
+        <h2 data-test-title>
+          {{ title }}
+        </h2>
+        <OpeningHours data-test-opening-hours show-cta />
+        <div class="flex gap-1 text-primary">
+          <SvgIcon class="size-6" />
+          <SvgIcon class="size-6" />
+          <SvgIcon class="size-6" />
+          <SvgIcon class="size-6" />
         </div>
       </div>
-      <div class="hidden md:block text-primary">
+      <div class="hidden md:flex flex-col justify-center text-primary">
         <SvgIcon class="size-50 scale-x-[-1]" />
       </div>
     </div>

@@ -1,14 +1,15 @@
 import { describe, expect, it } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import ImageHero from '~/components/blocks/image-hero.vue'
-import { mockImage, mockRichtext } from '~~/test/mock'
+import type { SanityImage } from '~/types/blocks'
+import { mockImage } from '~~/test/mock'
 
 const props = {
   documentId: 'doc-1',
   documentType: 'page',
   _type: 'imageHero' as const,
   image: mockImage,
-  text: mockRichtext,
+  title: 'Test title',
 }
 
 describe('ImageHero', () => {
@@ -54,12 +55,16 @@ describe('ImageHero', () => {
     expect(wrapper.find('[data-test-content]').exists()).toBe(true)
   })
 
-  it('renders the text in the content section', async () => {
+  it('renders the title in the content section', async () => {
     const wrapper = await mountSuspended(ImageHero, { props })
 
-    expect(wrapper.find('[data-test-content]').text()).toContain(
-      'Mock richtext content',
-    )
+    expect(wrapper.find('[data-test-title]').text()).toBe(props.title)
+  })
+
+  it('renders the opening hours component', async () => {
+    const wrapper = await mountSuspended(ImageHero, { props })
+
+    expect(wrapper.find('[data-test-opening-hours]').exists()).toBe(true)
   })
 
   it('renders image without crop or hotspot', async () => {

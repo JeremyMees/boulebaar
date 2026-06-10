@@ -16,9 +16,8 @@ const imageHeroType = defineType({
       validation: rule => rule.required(),
     }),
     defineField({
-      name: 'text',
-      type: 'array',
-      of: [{ type: 'block' }],
+      name: 'title',
+      type: 'string',
       validation: rule => rule.required(),
     }),
   ],
