@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest'
-import { mountSuspended } from '@nuxt/test-utils/runtime'
+import { mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
 import ImageHero from '~/components/blocks/image-hero.vue'
 import type { SanityImage } from '~/types/blocks'
-import { mockImage } from '~~/test/mock'
+import { mockConfig, mockImage } from '~~/test/mock'
+
+mockNuxtImport('useGlobalConfig', () => () => ({ data: ref(mockConfig) }))
 
 const props = {
   documentId: 'doc-1',

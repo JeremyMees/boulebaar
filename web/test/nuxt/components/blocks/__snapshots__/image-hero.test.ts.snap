@@ -7,13 +7,13 @@ exports[`ImageHero > matches snapshot 1`] = `
     <div class="flex flex-col gap-6">
       <h2 data-test-title="">Test title</h2>
       <ul id="visit" data-test-opening-hours="" class="w-full">
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">ma</span><span data-test-opening-hours-value=""></span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">di</span><span data-test-opening-hours-value=""></span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">wo</span><span data-test-opening-hours-value=""></span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">do</span><span data-test-opening-hours-value=""></span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">vr</span><span data-test-opening-hours-value=""></span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">za</span><span data-test-opening-hours-value=""></span></li>
-        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">zo</span><span data-test-opening-hours-value=""></span></li>
+        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">ma</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
+        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">di</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
+        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">wo</span><span data-test-opening-hours-value="">gesloten</span></li>
+        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">do</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
+        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">vr</span><span data-test-opening-hours-value="">12:00 - 00:00</span></li>
+        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">za</span><span data-test-opening-hours-value="">10:00 - 00:00</span></li>
+        <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">zo</span><span data-test-opening-hours-value="">gesloten</span></li>
         <!--v-if-->
       </ul>
       <div class="flex gap-1 text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1113.03 1080" aria-hidden="true" class="size-6">
