@@ -1,11 +1,19 @@
-import { ComponentIcon } from '@sanity/icons'
+import {
+  HeartIcon,
+  ImageIcon,
+  ImagesIcon,
+  InlineElementIcon,
+  TruncateIcon,
+  UlistIcon,
+  BottleIcon,
+} from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 const imageHeroType = defineType({
   name: 'imageHero',
   title: 'Image Hero',
   type: 'object',
-  icon: ComponentIcon,
+  icon: ImageIcon,
   fields: [
     defineField({
       name: 'image',
@@ -22,9 +30,15 @@ const imageHeroType = defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      title: 'title',
+      media: 'image',
+    },
+    prepare({ title, media }) {
       return {
-        title: 'Image Hero',
+        title: title,
+        subtitle: 'Image Hero',
+        media: media ?? ImageIcon,
       }
     },
   },
@@ -34,7 +48,7 @@ const infoColumnsType = defineType({
   name: 'infoColumns',
   title: 'Info Columns',
   type: 'object',
-  icon: ComponentIcon,
+  icon: InlineElementIcon,
   fields: [
     defineField({
       name: 'columns',
@@ -73,6 +87,7 @@ const infoColumnsType = defineType({
     prepare() {
       return {
         title: 'Info Columns',
+        media: InlineElementIcon,
       }
     },
   },
@@ -82,6 +97,7 @@ const accordionMenuSubSectionType = defineType({
   name: 'accordionMenuSubSection',
   title: 'Accordion Menu Sub Section',
   type: 'object',
+  icon: UlistIcon,
   fields: [
     defineField({
       name: 'title',
@@ -101,6 +117,7 @@ const accordionMenuSectionType = defineType({
   name: 'accordionMenuSection',
   title: 'Accordion Menu Section',
   type: 'object',
+  icon: TruncateIcon,
   fields: [
     defineField({
       name: 'title',
@@ -120,6 +137,7 @@ const menuItemType = defineType({
   name: 'menuItem',
   title: 'Menu Item',
   type: 'object',
+  icon: UlistIcon,
   fields: [
     defineField({
       name: 'name',
@@ -168,7 +186,7 @@ const menuType = defineType({
   name: 'menu',
   title: 'Menu',
   type: 'object',
-  icon: ComponentIcon,
+  icon: BottleIcon,
   fields: [
     defineField({
       name: 'title',
@@ -205,9 +223,14 @@ const menuType = defineType({
     }),
   ],
   preview: {
-    prepare() {
+    select: {
+      title: 'title',
+    },
+    prepare({ title }) {
       return {
-        title: 'Menu',
+        title,
+        subtitle: 'Menu',
+        media: BottleIcon,
       }
     },
   },
@@ -217,7 +240,7 @@ const imageGridType = defineType({
   name: 'imageGrid',
   title: 'Image Grid',
   type: 'object',
-  icon: ComponentIcon,
+  icon: ImagesIcon,
   fields: [
     defineField({
       name: 'images',
@@ -236,6 +259,7 @@ const imageGridType = defineType({
     prepare() {
       return {
         title: 'Image Grid',
+        media: ImagesIcon,
       }
     },
   },
@@ -245,7 +269,7 @@ const weServeType = defineType({
   name: 'weServe',
   title: 'We Serve',
   type: 'object',
-  icon: ComponentIcon,
+  icon: HeartIcon,
   fields: [
     defineField({
       name: 'title',
@@ -267,6 +291,7 @@ const weServeType = defineType({
     prepare() {
       return {
         title: 'We Serve',
+        media: HeartIcon,
       }
     },
   },
