@@ -16,6 +16,7 @@ const blockComponents: Record<
   infoColumns: resolveComponent('BlocksInfoColumns'),
   menu: resolveComponent('BlocksMenu'),
   imageGrid: resolveComponent('BlocksImageGrid'),
+  weServe: resolveComponent('BlocksWeServe'),
 }
 </script>
 

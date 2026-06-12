@@ -241,6 +241,37 @@ const imageGridType = defineType({
   },
 })
 
+const weServeType = defineType({
+  name: 'weServe',
+  title: 'We Serve',
+  type: 'object',
+  icon: ComponentIcon,
+  fields: [
+    defineField({
+      name: 'title',
+      type: 'string',
+      validation: rule => rule.required(),
+    }),
+    defineField({
+      name: 'link',
+      type: 'link',
+      validation: rule => rule.required(),
+    }),
+    defineField({
+      name: 'logo',
+      type: 'image',
+      validation: rule => rule.required(),
+    }),
+  ],
+  preview: {
+    prepare() {
+      return {
+        title: 'We Serve',
+      }
+    },
+  },
+})
+
 export const blockTypes = [
   imageHeroType,
   infoColumnsType,
@@ -249,4 +280,5 @@ export const blockTypes = [
   accordionMenuSectionType,
   menuType,
   imageGridType,
+  weServeType,
 ]

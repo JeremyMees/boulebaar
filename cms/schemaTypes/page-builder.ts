@@ -10,5 +10,6 @@ export const pageBuilderType = defineType({
     defineArrayMember({ type: 'infoColumns' }),
     defineArrayMember({ type: 'menu' }),
     defineArrayMember({ type: 'imageGrid' }),
+    defineArrayMember({ type: 'weServe' }),
   ],
 })

@@ -43,6 +43,10 @@ export const pageQuery = groq`
         ...,
         "images": images[]{ ${imageFragment} },
       },
+       _type == "weServe" => {
+        ...,
+        "logo": logo { ${imageFragment} },
+      },
     },
     "seo": {
       "_type": "seo",

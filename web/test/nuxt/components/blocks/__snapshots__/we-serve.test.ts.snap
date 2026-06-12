@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WeServe > matches snapshot 1`] = `
+"<section data-test-serve="" class="content-container py-8 md:py-16 flex justify-center"><a href="https://example.com" rel="noopener noreferrer" data-test-sanity-link="" class="flex flex-col items-center gap-2" _type="link" data-test-link="">
+    <h4 data-test-title="">We serve great food</h4>
+    <!--v-if-->
+  </a></section>"
+`;

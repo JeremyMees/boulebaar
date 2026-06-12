@@ -87,3 +87,7 @@ export type InfoColumnsBlock = Omit<InfoColumns, 'columns'> & {
     }
   >
 }
+
+export type WeServeBlock = Omit<WeServe, 'logo'> & {
+  logo: SanityImage | null
+}
