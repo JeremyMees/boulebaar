@@ -22,6 +22,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sanity',
     'motion-v/nuxt',
     '@nuxtjs/seo',
+    '@sentry/nuxt/module',
   ],
 
   alias: {
@@ -88,6 +89,8 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  sourcemap: { client: 'hidden' },
 
   vite: {
     plugins: [tailwindcss()],
