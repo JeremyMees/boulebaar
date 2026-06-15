@@ -6,7 +6,9 @@ defineProps<BlockMeta & ImageHero & { image: SanityImage }>()
 
 <template>
   <section>
-    <div class="h-[60vw] sm:h-auto max-h-125 w-full overflow-hidden">
+    <div
+      class="h-[60vw] sm:aspect-16/10 sm:h-auto sm:max-h-dvh w-full overflow-hidden"
+    >
       <SanityImage
         v-if="image?.asset"
         data-test-image
@@ -22,7 +24,6 @@ defineProps<BlockMeta & ImageHero & { image: SanityImage }>()
         class="object-cover w-full h-full"
       />
     </div>
-
     <div
       data-test-content
       class="content-container py-8 md:pt-16 flex justify-between gap-10"
