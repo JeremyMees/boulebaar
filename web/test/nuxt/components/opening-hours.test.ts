@@ -126,4 +126,97 @@ describe('OpeningHours', () => {
       'Reserveer nu!',
     )
   })
+
+  it('matches snapshot with an instagram link in the cta', async () => {
+    currentConfig = {
+      ...mockConfig,
+      instagram: 'https://instagram.com/boulebaar',
+      openingHours: {
+        ...mockConfig.openingHours,
+        cta: 'Volg ons op Instagram!',
+      },
+    }
+    const wrapper = await mountSuspended(OpeningHours, {
+      props: { showCta: true },
+    })
+
+    expect(
+      wrapper.find('[data-test-opening-hours-cta]').html(),
+    ).toMatchSnapshot()
+  })
+
+  it('renders an underlined instagram link inside the cta', async () => {
+    currentConfig = {
+      ...mockConfig,
+      instagram: 'https://instagram.com/boulebaar',
+      openingHours: {
+        ...mockConfig.openingHours,
+        cta: 'Volg ons op Instagram!',
+      },
+    }
+    const wrapper = await mountSuspended(OpeningHours, {
+      props: { showCta: true },
+    })
+
+    const link = wrapper.find('[data-test-opening-hours-cta] a')
+
+    expect(link.exists()).toBe(true)
+    expect(link.text()).toBe('Instagram')
+    expect(link.attributes('href')).toBe('https://instagram.com/boulebaar')
+    expect(link.classes()).toContain('underline')
+    expect(wrapper.find('[data-test-opening-hours-cta]').text()).toContain(
+      'Volg ons op Instagram!',
+    )
+  })
+
+  it('matches the instagram word case-insensitively', async () => {
+    currentConfig = {
+      ...mockConfig,
+      instagram: 'https://instagram.com/boulebaar',
+      openingHours: {
+        ...mockConfig.openingHours,
+        cta: 'Volg ons op instagram',
+      },
+    }
+    const wrapper = await mountSuspended(OpeningHours, {
+      props: { showCta: true },
+    })
+
+    const link = wrapper.find('[data-test-opening-hours-cta] a')
+
+    expect(link.exists()).toBe(true)
+    expect(link.text()).toBe('instagram')
+  })
+
+  it('does not render a link when the cta has no instagram mention', async () => {
+    currentConfig = {
+      ...mockConfig,
+      instagram: 'https://instagram.com/boulebaar',
+      openingHours: { ...mockConfig.openingHours, cta: 'Reserveer nu!' },
+    }
+    const wrapper = await mountSuspended(OpeningHours, {
+      props: { showCta: true },
+    })
+
+    expect(wrapper.find('[data-test-opening-hours-cta] a').exists()).toBe(false)
+  })
+
+  it('does not render a link when instagram is mentioned but no url is set', async () => {
+    currentConfig = {
+      ...mockConfig,
+      instagram: '',
+      openingHours: {
+        ...mockConfig.openingHours,
+        cta: 'Volg ons op Instagram!',
+      },
+    }
+    const wrapper = await mountSuspended(OpeningHours, {
+      props: { showCta: true },
+    })
+
+    expect(wrapper.find('[data-test-opening-hours-cta] a').exists()).toBe(false)
+    expect(wrapper.find('[data-test-opening-hours-cta]').text()).toBe(
+      'Volg ons op Instagram!',
+    )
+  })
 })

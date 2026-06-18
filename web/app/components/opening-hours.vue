@@ -36,6 +36,16 @@ const dayLabelMap: Record<Day, string> = {
   saturday: 'za',
   sunday: 'zo',
 }
+
+const ctaParts = computed(() => {
+  const text = stripStega(config.value?.openingHours?.cta)
+  if (!text) return []
+
+  return text.split(/(instagram)/gi).map(part => ({
+    text: part,
+    isInstagram: part.toLowerCase() === 'instagram',
+  }))
+})
 </script>
 
 <template>
@@ -57,11 +67,22 @@ const dayLabelMap: Record<Day, string> = {
       }}</span>
     </li>
     <li
-      v-if="showCta && config?.openingHours?.cta"
+      v-if="showCta && ctaParts.length"
       data-test-opening-hours-cta
       class="small pt-1.5"
     >
-      {{ config.openingHours.cta }}
+      <template v-for="(part, index) in ctaParts" :key="index">
+        <NuxtLink
+          v-if="part.isInstagram && config?.instagram"
+          data-test-instagram
+          :to="config.instagram"
+          target="_blank"
+          class="underline"
+        >
+          {{ part.text }}
+        </NuxtLink>
+        <template v-else>{{ part.text }}</template>
+      </template>
     </li>
   </ul>
 </template>

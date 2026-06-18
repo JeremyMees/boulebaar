@@ -12,3 +12,5 @@ exports[`OpeningHours > matches snapshot 1`] = `
   <!--v-if-->
 </ul>"
 `;
+
+exports[`OpeningHours > matches snapshot with an instagram link in the cta 1`] = `"<li data-test-opening-hours-cta="" class="small pt-1.5">Volg ons op <a href="https://instagram.com/boulebaar" rel="noopener noreferrer" target="_blank" data-test-instagram="" class="underline">Instagram</a>!</li>"`;
