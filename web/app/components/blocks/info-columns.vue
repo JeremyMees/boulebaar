@@ -31,7 +31,7 @@ defineProps<BlockMeta & InfoColumnsBlock>()
         <div
           v-if="column.text"
           data-test-text
-          class="[&_p]:text-sm [&_p]:leading-[1.55] [&_p]:text-muted-foreground"
+          class="[&_p]:text-sm [&_p]:leading-[1.55] [&_p]:text-muted-foreground [&_a]:underline"
         >
           <Richtext :value="column.text" />
         </div>
