@@ -151,7 +151,7 @@ const menuItemType = defineType({
     }),
     defineField({
       name: 'ingredients',
-      type: 'string',
+      type: 'text',
     }),
     defineField({
       name: 'extras',
