@@ -26,6 +26,24 @@ const menuSection = {
   items: [menuItem, veganItem],
 }
 
+const extraWithPrice = {
+  _key: 'extra-1',
+  _type: 'option' as const,
+  name: 'Extra cheese',
+  price: '€1',
+}
+
+const extraWithoutPrice = {
+  _key: 'extra-2',
+  _type: 'option' as const,
+  name: 'Extra sauce',
+}
+
+const menuSectionWithExtras = {
+  ...menuSection,
+  extras: [extraWithPrice, extraWithoutPrice],
+}
+
 const beerSubSection = {
   _key: 'sub-1',
   _type: 'accordionMenuSubSection' as const,
@@ -125,6 +143,71 @@ describe('Menu', () => {
 
       expect(wrapper.find('[data-test-block]').exists()).toBe(true)
       expect(wrapper.findAll('[data-test-block-column-item]')).toHaveLength(0)
+    })
+
+    describe('Extras', () => {
+      const extrasProps: BlockMeta & Menu = {
+        ...props,
+        menuBlock: [menuSectionWithExtras],
+      }
+
+      it('does not render the extras container when there are no extras', async () => {
+        const wrapper = await mountSuspended(Menu, { props })
+
+        expect(wrapper.find('[data-test-extras]').exists()).toBe(false)
+      })
+
+      it('does not render the extras container when extras is empty', async () => {
+        const wrapper = await mountSuspended(Menu, {
+          props: { ...props, menuBlock: [{ ...menuSection, extras: [] }] },
+        })
+
+        expect(wrapper.find('[data-test-extras]').exists()).toBe(false)
+      })
+
+      it('renders the extras container when extras are present', async () => {
+        const wrapper = await mountSuspended(Menu, { props: extrasProps })
+
+        expect(wrapper.find('[data-test-extras]').exists()).toBe(true)
+      })
+
+      it('renders an entry for each extra', async () => {
+        const wrapper = await mountSuspended(Menu, { props: extrasProps })
+
+        expect(wrapper.findAll('[data-test-extra]')).toHaveLength(
+          menuSectionWithExtras.extras.length,
+        )
+      })
+
+      it('renders the extra names', async () => {
+        const wrapper = await mountSuspended(Menu, { props: extrasProps })
+        const names = wrapper
+          .findAll('[data-test-extra-name]')
+          .map(el => el.text())
+
+        expect(names).toContain(extraWithPrice.name)
+        expect(names).toContain(extraWithoutPrice.name)
+      })
+
+      it('renders the price only for extras that have one', async () => {
+        const wrapper = await mountSuspended(Menu, { props: extrasProps })
+        const prices = wrapper
+          .findAll('[data-test-extra-price]')
+          .map(el => el.text())
+
+        expect(prices).toEqual([extraWithPrice.price])
+      })
+
+      it('renders extras independently per section', async () => {
+        const wrapper = await mountSuspended(Menu, {
+          props: {
+            ...props,
+            menuBlock: [menuSectionWithExtras, menuSection],
+          },
+        })
+
+        expect(wrapper.findAll('[data-test-extras]')).toHaveLength(1)
+      })
     })
   })
 

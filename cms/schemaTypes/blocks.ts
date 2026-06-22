@@ -213,6 +213,27 @@ const menuType = defineType({
               validation: rule =>
                 rule.required() && rule.min(1) && rule.max(50),
             }),
+            defineField({
+              name: 'extras',
+              type: 'array',
+              of: [
+                defineField({
+                  name: 'option',
+                  type: 'object',
+                  fields: [
+                    defineField({
+                      name: 'name',
+                      type: 'string',
+                      validation: rule => rule.required(),
+                    }),
+                    defineField({
+                      name: 'price',
+                      type: 'string',
+                    }),
+                  ],
+                }),
+              ],
+            }),
           ],
         }),
         {

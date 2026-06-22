@@ -33,6 +33,24 @@ defineProps<BlockMeta & Menu>()
             />
           </div>
         </div>
+        <div
+          v-if="block.extras?.length"
+          data-test-extras
+          class="flex flex-col gap-0.5"
+        >
+          <span
+            v-for="(extra, extraIndex) in block.extras"
+            :key="extraIndex"
+            data-test-extra
+            class="h5 flex items-center gap-2"
+          >
+            <Icon name="tabler:plus" />
+            <span data-test-extra-name>{{ extra.name }}</span>
+            <span v-if="extra.price" data-test-extra-price class="ml-2">
+              {{ extra.price }}
+            </span>
+          </span>
+        </div>
       </template>
 
       <Collapsible
