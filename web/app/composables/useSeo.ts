@@ -18,7 +18,7 @@ export function useSeo(
   })
 
   useHead({
-    titleTemplate: '%s',
+    titleTemplate: 'Boulebaar | %s',
     link: [
       {
         rel: 'icon',
@@ -29,7 +29,7 @@ export function useSeo(
   })
 
   useSeoMeta({
-    title: () => defaultSeo.name,
+    title: () => title.value,
     description: () => description.value,
     ogTitle: () => title.value,
     ogDescription: () => description.value,
@@ -41,6 +41,8 @@ export function useSeo(
     twitterDescription: () => description.value,
     twitterCard: 'summary_large_image',
   })
+
+  const { url: siteUrl } = useSiteConfig()
 
   useSchemaOrg(() => {
     const siteConfig = config.value
@@ -63,12 +65,26 @@ export function useSeo(
         name: 'Boulebaar',
         description: defaultSeo.description,
         logo: '/logo.webp',
+        image: '/boulebaar.jpg',
         email,
         telephone,
+        servesCuisine: 'Coffee, Brunch, Breakfast, International, Fusion',
+        priceRange: '€€',
+        currenciesAccepted: 'EUR',
+        hasMenu: `${siteUrl}/#menu`,
         openingHoursSpecification:
           generateOpeningHoursSpecification(siteConfig),
         contactPoint,
         sameAs,
+        areaServed: {
+          '@type': 'City',
+          name: 'Hasselt',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: 50.927925,
+          longitude: 5.335662,
+        },
         address: {
           streetAddress: 'Leopoldplein 17',
           addressLocality: 'Hasselt',
