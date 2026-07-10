@@ -1,4 +1,5 @@
 import { createClient } from '@sanity/client'
+import { withLeadingSlash } from 'ufo'
 import type { SitemapUrlInput } from '#sitemap/types'
 
 export default defineSitemapEventHandler(async () => {
@@ -18,7 +19,7 @@ export default defineSitemapEventHandler(async () => {
   `)
 
   return pages.map<SitemapUrlInput>(({ slug, _updatedAt }) => ({
-    loc: slug === 'home' ? '/' : `/${slug}`,
+    loc: withLeadingSlash(slug),
     lastmod: _updatedAt,
   }))
 })
