@@ -7,6 +7,25 @@ const { resolve } = createResolver(import.meta.url)
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
 
+  $production: {
+    routeRules: {
+      '/**': { isr: 1800 },
+      '/api/**': { isr: false },
+      '/preview/**': { isr: false },
+      '/_sanity/**': { isr: false },
+    },
+    nitro: {
+      vercel: {
+        config: {
+          bypassToken: process.env.NUXT_VERCEL_BYPASS_TOKEN,
+        },
+      },
+    },
+    sanity: {
+      useCdn: false,
+    },
+  },
+
   devtools: { enabled: true },
 
   experimental: { viewTransition: true },
@@ -31,6 +50,14 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/tailwind.css'],
 
+  runtimeConfig: {
+    revalidateSecret: process.env.NUXT_REVALIDATE_SECRET,
+    vercelBypassToken: process.env.NUXT_VERCEL_BYPASS_TOKEN,
+    public: {
+      baseUrl: process.env.NUXT_PUBLIC_BASE_URL,
+    },
+  },
+
   imports: { dirs: ['~/types/*.ts'] },
 
   app: {
@@ -51,6 +78,10 @@ export default defineNuxtConfig({
     visualEditing: {
       token: process.env.NUXT_SANITY_API_READ_TOKEN,
       studioUrl: process.env.NUXT_SANITY_STUDIO_URL,
+      previewMode: {
+        enable: '/preview/_enable',
+        disable: '/preview/_disable',
+      },
     },
   },
 
