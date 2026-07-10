@@ -1,8 +1,12 @@
+<script setup lang="ts">
+const isInEditor = useIsSanityPresentationTool()
+</script>
+
 <template>
   <NuxtRouteAnnouncer />
 
   <ClientOnly>
-    <Cursor />
+    <Cursor v-if="!isInEditor" />
   </ClientOnly>
 
   <NuxtLayout>

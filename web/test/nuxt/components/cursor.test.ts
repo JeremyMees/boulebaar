@@ -42,6 +42,7 @@ describe('Cursor', () => {
     mouseY.value = 0
     isMobileRef.value = false
     isPressedRef.value = false
+    document.documentElement.classList.remove('custom-cursor')
   })
 
   it('matches snapshot', async () => {
@@ -130,5 +131,23 @@ describe('Cursor', () => {
     await nextTick()
 
     expect(getAnimate(wrapper)).toMatchObject({ opacity: 0 })
+  })
+
+  it('adds the custom-cursor class while mounted', async () => {
+    await mountSuspended(Cursor)
+
+    expect(document.documentElement.classList.contains('custom-cursor')).toBe(
+      true,
+    )
+  })
+
+  it('removes the custom-cursor class when unmounted', async () => {
+    const wrapper = await mountSuspended(Cursor)
+
+    wrapper.unmount()
+
+    expect(document.documentElement.classList.contains('custom-cursor')).toBe(
+      false,
+    )
   })
 })

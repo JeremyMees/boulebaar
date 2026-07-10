@@ -9,6 +9,9 @@ const smoothX = useSpring(cursorX, spring)
 const smoothY = useSpring(cursorY, spring)
 const visible = ref(false)
 
+onMounted(() => document.documentElement.classList.add('custom-cursor'))
+onUnmounted(() => document.documentElement.classList.remove('custom-cursor'))
+
 watch([x, y], ([newX, newY]) => {
   cursorX.set(newX)
   cursorY.set(newY)
@@ -44,9 +47,10 @@ useEventListener(document, 'mouseleave', () => (visible.value = false))
 
 <style>
 @media (pointer: fine) {
-  *,
-  *::before,
-  *::after {
+  .custom-cursor,
+  .custom-cursor *,
+  .custom-cursor *::before,
+  .custom-cursor *::after {
     cursor: none !important;
   }
 }
