@@ -65,7 +65,7 @@ describe('generateOpeningHoursSpecification', () => {
     expect(monday?.closes).toBe('22:00')
   })
 
-  it('parses single-digit hour times', () => {
+  it('pads single-digit hours to two digits', () => {
     const config = {
       ...mockConfig,
       openingHours: { ...mockConfig.openingHours, monday: '9:00 - 22:00' },
@@ -73,8 +73,44 @@ describe('generateOpeningHoursSpecification', () => {
     const result = generateOpeningHoursSpecification(config)
     const monday = result.find(r => r.dayOfWeek === 'Monday')
 
-    expect(monday?.opens).toBe('9:00')
+    expect(monday?.opens).toBe('09:00')
     expect(monday?.closes).toBe('22:00')
+  })
+
+  it('parses Dutch "u" notation without minutes', () => {
+    const config = {
+      ...mockConfig,
+      openingHours: { ...mockConfig.openingHours, monday: '11u - 17u' },
+    }
+    const result = generateOpeningHoursSpecification(config)
+    const monday = result.find(r => r.dayOfWeek === 'Monday')
+
+    expect(monday?.opens).toBe('11:00')
+    expect(monday?.closes).toBe('17:00')
+  })
+
+  it('parses Dutch "u" notation with minutes', () => {
+    const config = {
+      ...mockConfig,
+      openingHours: { ...mockConfig.openingHours, monday: '11u30 - 17u30' },
+    }
+    const result = generateOpeningHoursSpecification(config)
+    const monday = result.find(r => r.dayOfWeek === 'Monday')
+
+    expect(monday?.opens).toBe('11:30')
+    expect(monday?.closes).toBe('17:30')
+  })
+
+  it('parses dot-separated times', () => {
+    const config = {
+      ...mockConfig,
+      openingHours: { ...mockConfig.openingHours, monday: '11.30 - 17.30' },
+    }
+    const result = generateOpeningHoursSpecification(config)
+    const monday = result.find(r => r.dayOfWeek === 'Monday')
+
+    expect(monday?.opens).toBe('11:30')
+    expect(monday?.closes).toBe('17:30')
   })
 
   it('returns empty array when all days are empty strings', () => {

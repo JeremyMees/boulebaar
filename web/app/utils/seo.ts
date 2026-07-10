@@ -22,16 +22,21 @@ export function generateOpeningHoursSpecification(
 
   return dayMap.flatMap(([key, dayName]) => {
     const val = config?.openingHours?.[key]
-    const match = val?.match(/(\d{1,2}:\d{2})\s*[-–]\s*(\d{1,2}:\d{2})/)
+    const match = val?.match(
+      /(\d{1,2})(?:[:.u](\d{2})?)?\s*[-–]\s*(\d{1,2})(?:[:.u](\d{2})?)?/i,
+    )
 
-    if (!match) return []
+    if (!match?.[1] || !match[3]) return []
+
+    const toTime = (hours: string, minutes?: string) =>
+      `${hours.padStart(2, '0')}:${minutes ?? '00'}`
 
     return [
       {
         '@type': 'OpeningHoursSpecification' as const,
         dayOfWeek: dayName,
-        opens: match[1],
-        closes: match[2],
+        opens: toTime(match[1], match[2]),
+        closes: toTime(match[3], match[4]),
       },
     ]
   })

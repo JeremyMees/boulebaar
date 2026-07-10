@@ -68,9 +68,18 @@ export function useSeo(
         image: '/boulebaar.jpg',
         email,
         telephone,
-        servesCuisine: 'Coffee, Brunch, Breakfast, International, Fusion',
+        // @unhead/schema-org types servesCuisine as string, but
+        // schema.org allows an array and it serializes correctly
+        servesCuisine: [
+          'Coffee',
+          'Brunch',
+          'Breakfast',
+          'International',
+          'Fusion',
+        ] as unknown as string,
         priceRange: '€€',
         currenciesAccepted: 'EUR',
+        paymentAccepted: 'Cash, Bancontact, Credit Card',
         hasMenu: `${siteUrl}/#menu`,
         openingHoursSpecification:
           generateOpeningHoursSpecification(siteConfig),
