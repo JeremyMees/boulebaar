@@ -30,6 +30,7 @@
     "@sanity/client": "^7.22.1",
     "@sanity/image-url": "^2.1.1",
     "@sanity/preview-url-secret": "^4.0.8",
+    "@sanity/visual-editing": "^5.3.6",
     "@sanity/webhook": "^4.0.4",
     "@sentry/nuxt": "^10.57.0",
     "@vueuse/core": "14.3.0",
