@@ -15,6 +15,10 @@ const { data } = await useSanityQuery<PageQueryResult>(pageQuery, {
   slug: slug.value,
 })
 
+if (import.meta.server && !data.value) {
+  setResponseStatus(useRequestEvent()!, 404)
+}
+
 useSeo(() => data.value?.seo)
 
 watchEffect(() => {
