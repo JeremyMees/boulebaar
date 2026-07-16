@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { data: config } = await useGlobalConfig()
+const attr = useConfigAttribute()
 const { y: scrollY } = useWindowScroll()
 const isSmall = useMediaQuery('(max-width: 767px)')
 const variant = useState<NavigationVariant>('nav-variant', () => 'default')
@@ -53,6 +54,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
             v-for="item in config?.navigationLinks"
             :key="item._key"
             v-bind="item.link"
+            :data-sanity="attr('navigationLinks', { _key: item._key }, 'name')"
             class="cursor-pointer hover:opacity-60 font-medium transition-opacity h-10 px-2.5 flex flex-col justify-center"
           >
             {{ item.name }}
@@ -133,6 +135,9 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
               <SanityLink
                 v-bind="item.link"
                 data-test-navigation-overlay-link
+                :data-sanity="
+                  attr('navigationLinks', { _key: item._key }, 'name')
+                "
                 class="text-[40px] font-medium leading-none tracking-[-0.02em] text-background no-underline w-full"
                 @click="mobileNavOpen = false"
               >
@@ -155,6 +160,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
             <NuxtLink
               v-if="config?.address.link.url && config?.address.name"
               data-test-navigation-address
+              :data-sanity="attr('address', 'name')"
               :to="config.address.link.url"
               target="_blank"
               class="text-sm leading-snug text-background"
@@ -169,6 +175,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
               <NuxtLink
                 v-if="config?.instagram"
                 data-test-navigation-instagram
+                :data-sanity="attr('instagram')"
                 :to="config.instagram"
                 target="_blank"
                 aria-label="Instagram"
@@ -179,6 +186,7 @@ onKeyStroke('Escape', () => (mobileNavOpen.value = false))
               <NuxtLink
                 v-if="config?.facebook"
                 data-test-navigation-facebook
+                :data-sanity="attr('facebook')"
                 :to="config.facebook"
                 target="_blank"
                 aria-label="Facebook"

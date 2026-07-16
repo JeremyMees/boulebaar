@@ -14,6 +14,10 @@ export interface BlockMeta {
   documentType: string
 }
 
+export interface BlockProps extends BlockMeta {
+  blockKey: string
+}
+
 export type RichBlock = {
   _type: 'block'
   _key: string

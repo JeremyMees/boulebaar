@@ -81,9 +81,10 @@ const accordionSection = {
   subSections: [beerSubSection, wineSubSection],
 }
 
-const props: BlockMeta & Menu = {
+const props: BlockProps & Menu = {
   documentId: 'doc-1',
   documentType: 'page',
+  blockKey: 'block-1',
   _type: 'menu',
   title: 'Our Menu',
   menuBlock: [menuSection],
@@ -146,7 +147,7 @@ describe('Menu', () => {
     })
 
     describe('Extras', () => {
-      const extrasProps: BlockMeta & Menu = {
+      const extrasProps: BlockProps & Menu = {
         ...props,
         menuBlock: [menuSectionWithExtras],
       }
@@ -212,7 +213,7 @@ describe('Menu', () => {
   })
 
   describe('AccordionMenuSection', () => {
-    const accordionProps: BlockMeta & Menu = {
+    const accordionProps: BlockProps & Menu = {
       ...props,
       menuBlock: [accordionSection],
     }

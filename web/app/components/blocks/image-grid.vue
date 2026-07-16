@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import type { BlockMeta, SanityImage } from '@/types/blocks'
+import type { BlockProps, SanityImage } from '@/types/blocks'
 
-const props = defineProps<BlockMeta & { images: SanityImage[] }>()
+const props = defineProps<
+  BlockProps & { images: Array<SanityImage & { _key: string }> }
+>()
+const attr = useBlockAttribute(props)
 
 const isMobile = useMediaQuery('(max-width: 767px)')
 
@@ -31,6 +34,7 @@ const columns = computed(() =>
           <SanityImage
             v-if="image?.asset"
             data-test-image
+            :data-sanity="attr('images', { _key: image._key })"
             :asset-id="image.asset._ref"
             :modifiers="{
               ...(image.crop ? { crop: image.crop } : {}),

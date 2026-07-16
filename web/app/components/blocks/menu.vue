@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { BlockMeta } from '@/types/blocks'
+import type { BlockProps } from '@/types/blocks'
 
-defineProps<BlockMeta & Menu>()
+const props = defineProps<BlockProps & Menu>()
+const attr = useBlockAttribute(props)
 </script>
 
 <template>
@@ -9,15 +10,21 @@ defineProps<BlockMeta & Menu>()
     id="menu"
     class="content-container max-w-300 flex flex-col gap-4 py-8 md:py-16"
   >
-    <h2 data-test-title>{{ title }}</h2>
+    <h2 data-test-title :data-sanity="attr('title')">{{ title }}</h2>
     <div
       v-for="(block, index) in menuBlock"
-      :key="index"
+      :key="block._key ?? index"
       data-test-block
       class="py-8 flex flex-col gap-6 border-t last:border-b"
     >
       <template v-if="block._type === 'menuSection'">
-        <h3 data-test-block-title class="text-center">{{ block.title }}</h3>
+        <h3
+          data-test-block-title
+          class="text-center"
+          :data-sanity="attr('menuBlock', { _key: block._key }, 'title')"
+        >
+          {{ block.title }}
+        </h3>
         <div class="flex flex-col gap-4 lg:flex-row lg:gap-x-16">
           <div
             v-for="(column, colIndex) in splitInHalf(block.items)"
@@ -27,8 +34,13 @@ defineProps<BlockMeta & Menu>()
           >
             <MenuItem
               v-for="(item, itemIndex) in column"
-              :key="itemIndex"
+              :key="item._key ?? itemIndex"
               :item="item"
+              :data-sanity="
+                attr('menuBlock', { _key: block._key }, 'items', {
+                  _key: item._key,
+                })
+              "
               data-test-block-column-item
             />
           </div>
@@ -40,9 +52,14 @@ defineProps<BlockMeta & Menu>()
         >
           <span
             v-for="(extra, extraIndex) in block.extras"
-            :key="extraIndex"
+            :key="extra._key ?? extraIndex"
             data-test-extra
             class="h5 flex items-center gap-2"
+            :data-sanity="
+              attr('menuBlock', { _key: block._key }, 'extras', {
+                _key: extra._key,
+              })
+            "
           >
             <Icon name="tabler:plus" />
             <span data-test-extra-name>{{ extra.name }}</span>
@@ -58,7 +75,13 @@ defineProps<BlockMeta & Menu>()
         class="flex flex-col gap-2"
       >
         <div class="flex items-center justify-center gap-4">
-          <h3 data-test-block-title class="text-center">{{ block.title }}</h3>
+          <h3
+            data-test-block-title
+            class="text-center"
+            :data-sanity="attr('menuBlock', { _key: block._key }, 'title')"
+          >
+            {{ block.title }}
+          </h3>
           <CollapsibleTrigger as-child>
             <Button data-test-toggle size="icon-sm" class="group">
               <Icon
@@ -75,17 +98,43 @@ defineProps<BlockMeta & Menu>()
           >
             <div
               v-for="(subSection, colIndex) in block.subSections"
-              :key="colIndex"
+              :key="subSection._key ?? colIndex"
               data-test-block-column
               class="flex flex-col gap-4"
             >
-              <h4 data-test-subsection-title class="border-b pb-2">
+              <h4
+                data-test-subsection-title
+                class="border-b pb-2"
+                :data-sanity="
+                  attr(
+                    'menuBlock',
+                    { _key: block._key },
+                    'subSections',
+                    {
+                      _key: subSection._key,
+                    },
+                    'title',
+                  )
+                "
+              >
                 {{ subSection.title }}
               </h4>
               <MenuItem
                 v-for="(item, itemIndex) in subSection.items"
-                :key="itemIndex"
+                :key="item._key ?? itemIndex"
                 :item="item"
+                :data-sanity="
+                  attr(
+                    'menuBlock',
+                    { _key: block._key },
+                    'subSections',
+                    {
+                      _key: subSection._key,
+                    },
+                    'items',
+                    { _key: item._key },
+                  )
+                "
                 data-test-block-column-item
               />
             </div>

@@ -2,15 +2,15 @@
 
 exports[`OpeningHours > matches snapshot 1`] = `
 "<ul id="visit" data-test-opening-hours="" class="w-full">
-  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">ma</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
-  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">di</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
-  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">wo</span><span data-test-opening-hours-value="">gesloten</span></li>
-  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">do</span><span data-test-opening-hours-value="">12:00 - 22:00</span></li>
-  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">vr</span><span data-test-opening-hours-value="">12:00 - 00:00</span></li>
-  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">za</span><span data-test-opening-hours-value="">10:00 - 00:00</span></li>
-  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">zo</span><span data-test-opening-hours-value="">gesloten</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">ma</span><span data-test-opening-hours-value="" data-sanity="id=config;type=config;path=openingHours.monday;base=%2F">12:00 - 22:00</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">di</span><span data-test-opening-hours-value="" data-sanity="id=config;type=config;path=openingHours.tuesday;base=%2F">12:00 - 22:00</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">wo</span><span data-test-opening-hours-value="" data-sanity="id=config;type=config;path=openingHours.wednesday;base=%2F">gesloten</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">do</span><span data-test-opening-hours-value="" data-sanity="id=config;type=config;path=openingHours.thursday;base=%2F">12:00 - 22:00</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">vr</span><span data-test-opening-hours-value="" data-sanity="id=config;type=config;path=openingHours.friday;base=%2F">12:00 - 00:00</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">za</span><span data-test-opening-hours-value="" data-sanity="id=config;type=config;path=openingHours.saturday;base=%2F">10:00 - 00:00</span></li>
+  <li data-test-opening-hours-day="" class="py-1.5 border-b flex justify-between small text-muted-foreground border-muted"><span data-test-opening-hours-label="">zo</span><span data-test-opening-hours-value="" data-sanity="id=config;type=config;path=openingHours.sunday;base=%2F">gesloten</span></li>
   <!--v-if-->
 </ul>"
 `;
 
-exports[`OpeningHours > matches snapshot with an instagram link in the cta 1`] = `"<li data-test-opening-hours-cta="" class="small pt-1.5">Volg ons op <a href="https://instagram.com/boulebaar" rel="noopener noreferrer" target="_blank" data-test-instagram="" class="underline">Instagram</a>!</li>"`;
+exports[`OpeningHours > matches snapshot with an instagram link in the cta 1`] = `"<li data-test-opening-hours-cta="" class="small pt-1.5" data-sanity="id=config;type=config;path=openingHours.cta;base=%2F">Volg ons op <a href="https://instagram.com/boulebaar" rel="noopener noreferrer" target="_blank" data-test-instagram="" class="underline">Instagram</a>!</li>"`;

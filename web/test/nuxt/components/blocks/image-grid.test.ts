@@ -10,6 +10,7 @@ mockNuxtImport('useMediaQuery', () => () => isMobileRef)
 const props = {
   documentId: 'doc-1',
   documentType: 'page',
+  blockKey: 'block-1',
   images: [mockImage, mockImage, mockImage],
 }
 
@@ -131,7 +132,10 @@ describe('ImageGrid', () => {
 
   it('does not render an image for null entries in the images array', async () => {
     const wrapper = await mountSuspended(ImageGrid, {
-      props: { ...props, images: [null as unknown as SanityImage] },
+      props: {
+        ...props,
+        images: [null as unknown as SanityImage & { _key: string }],
+      },
     })
 
     expect(wrapper.find('[data-test-image]').exists()).toBe(false)

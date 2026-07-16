@@ -1,6 +1,7 @@
 import type { SanityImage } from '~/types/blocks'
 
-export const mockImage: SanityImage = {
+export const mockImage: SanityImage & { _key: string } = {
+  _key: 'image-key',
   _type: 'image',
   asset: { _ref: 'image-abc123-800x600-jpg', _type: 'reference' },
   hotspot: {

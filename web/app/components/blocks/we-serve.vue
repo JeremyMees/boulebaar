@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { BlockMeta, WeServeBlock } from '@/types/blocks'
+import type { BlockProps, WeServeBlock } from '@/types/blocks'
 
-defineProps<BlockMeta & WeServeBlock>()
+const props = defineProps<BlockProps & WeServeBlock>()
+const attr = useBlockAttribute(props)
 </script>
 
 <template>
@@ -12,14 +13,16 @@ defineProps<BlockMeta & WeServeBlock>()
     <SanityLink
       v-bind="link"
       data-test-link
+      :data-sanity="attr('link')"
       class="flex flex-col items-center gap-2"
     >
-      <h4 data-test-title>
+      <h4 data-test-title :data-sanity="attr('title')">
         {{ title }}
       </h4>
       <SanityImage
         v-if="logo?.asset"
         data-test-image
+        :data-sanity="attr('logo')"
         :asset-id="logo.asset._ref"
         :alt="stripStega(logo.altText)"
         width="341"

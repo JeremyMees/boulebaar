@@ -9,6 +9,7 @@ mockNuxtImport('useGlobalConfig', () => () => ({ data: ref(mockConfig) }))
 const props = {
   documentId: 'doc-1',
   documentType: 'page',
+  blockKey: 'block-1',
   _type: 'imageHero' as const,
   image: mockImage,
   title: 'Test title',

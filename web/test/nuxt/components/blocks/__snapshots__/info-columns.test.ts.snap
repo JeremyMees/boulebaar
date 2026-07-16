@@ -2,26 +2,26 @@
 
 exports[`InfoColumns > matches snapshot 1`] = `
 "<section data-test-info-columns="" class="content-container py-8 md:py-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-  <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="100vw md:50vw lg:33vw" class="object-cover w-full aspect-10/12">
+  <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" data-sanity="id=doc-1;type=page;path=content:block-1.columns:col-1.image;base=%2F" modifiers="[object Object]" sizes="100vw md:50vw lg:33vw" class="object-cover w-full aspect-10/12">
     <div data-test-content="" class="flex flex-col gap-2">
-      <p class="font-semibold">Text column title</p>
-      <div data-test-text="" class="[&amp;_p]:text-sm [&amp;_p]:leading-[1.55] [&amp;_p]:text-muted-foreground [&amp;_a]:underline">
+      <p class="font-semibold" data-sanity="id=doc-1;type=page;path=content:block-1.columns:col-1.title;base=%2F">Text column title</p>
+      <div data-test-text="" data-sanity="id=doc-1;type=page;path=content:block-1.columns:col-1.text;base=%2F" class="[&amp;_p]:text-sm [&amp;_p]:leading-[1.55] [&amp;_p]:text-muted-foreground [&amp;_a]:underline">
         <p>Mock richtext content</p>
       </div>
     </div>
   </div>
-  <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="100vw md:50vw lg:33vw" class="object-cover w-full aspect-10/12">
+  <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" data-sanity="id=doc-1;type=page;path=content:block-1.columns:col-1.image;base=%2F" modifiers="[object Object]" sizes="100vw md:50vw lg:33vw" class="object-cover w-full aspect-10/12">
     <div data-test-content="" class="flex flex-col gap-2">
-      <p class="font-semibold">Text column title</p>
-      <div data-test-text="" class="[&amp;_p]:text-sm [&amp;_p]:leading-[1.55] [&amp;_p]:text-muted-foreground [&amp;_a]:underline">
+      <p class="font-semibold" data-sanity="id=doc-1;type=page;path=content:block-1.columns:col-1.title;base=%2F">Text column title</p>
+      <div data-test-text="" data-sanity="id=doc-1;type=page;path=content:block-1.columns:col-1.text;base=%2F" class="[&amp;_p]:text-sm [&amp;_p]:leading-[1.55] [&amp;_p]:text-muted-foreground [&amp;_a]:underline">
         <p>Mock richtext content</p>
       </div>
     </div>
   </div>
-  <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="100vw md:50vw lg:33vw" class="object-cover w-full aspect-10/12">
+  <div class="flex flex-col gap-6 md:gap-10"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" data-sanity="id=doc-1;type=page;path=content:block-1.columns:col-1.image;base=%2F" modifiers="[object Object]" sizes="100vw md:50vw lg:33vw" class="object-cover w-full aspect-10/12">
     <div data-test-content="" class="flex flex-col gap-2">
-      <p class="font-semibold">Text column title</p>
-      <div data-test-text="" class="[&amp;_p]:text-sm [&amp;_p]:leading-[1.55] [&amp;_p]:text-muted-foreground [&amp;_a]:underline">
+      <p class="font-semibold" data-sanity="id=doc-1;type=page;path=content:block-1.columns:col-1.title;base=%2F">Text column title</p>
+      <div data-test-text="" data-sanity="id=doc-1;type=page;path=content:block-1.columns:col-1.text;base=%2F" class="[&amp;_p]:text-sm [&amp;_p]:leading-[1.55] [&amp;_p]:text-muted-foreground [&amp;_a]:underline">
         <p>Mock richtext content</p>
       </div>
     </div>

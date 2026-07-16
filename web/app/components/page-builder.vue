@@ -32,6 +32,7 @@ const blockComponents: Record<
         v-bind="block"
         :document-id="documentId"
         :document-type="documentType"
+        :block-key="block._key"
       />
     </div>
   </template>

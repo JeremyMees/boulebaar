@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 const { data: config } = await useGlobalConfig()
+const attr = useConfigAttribute()
 </script>
 
 <template>
@@ -24,6 +25,7 @@ const { data: config } = await useGlobalConfig()
             <NuxtLink
               v-if="config?.address.link.url && config?.address.name"
               data-test-address
+              :data-sanity="attr('address', 'name')"
               :to="config.address.link.url"
               target="_blank"
               class="flex gap-2 items-start"
@@ -34,6 +36,7 @@ const { data: config } = await useGlobalConfig()
             <NuxtLink
               v-if="config?.number"
               data-test-number
+              :data-sanity="attr('number')"
               :to="`tel:${config.number}`"
               target="_blank"
               class="flex gap-2 items-start"
@@ -44,6 +47,7 @@ const { data: config } = await useGlobalConfig()
             <NuxtLink
               v-if="config?.email"
               data-test-email
+              :data-sanity="attr('email')"
               :to="`mailto:${config.email}`"
               target="_blank"
               class="flex gap-2 items-start"
@@ -56,6 +60,7 @@ const { data: config } = await useGlobalConfig()
             <NuxtLink
               v-if="config?.instagram"
               data-test-instagram
+              :data-sanity="attr('instagram')"
               :to="config.instagram"
               target="_blank"
               aria-label="Instagram"
@@ -66,6 +71,7 @@ const { data: config } = await useGlobalConfig()
             <NuxtLink
               v-if="config?.facebook"
               data-test-facebook
+              :data-sanity="attr('facebook')"
               :to="config.facebook"
               target="_blank"
               aria-label="Facebook"

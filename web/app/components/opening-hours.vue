@@ -16,6 +16,7 @@ const props = withDefaults(
 )
 
 const { data: config } = await useGlobalConfig()
+const attr = useConfigAttribute()
 
 const days: Day[] = [
   'monday',
@@ -62,14 +63,18 @@ const ctaParts = computed(() => {
       "
     >
       <span data-test-opening-hours-label>{{ dayLabelMap[day] }}</span>
-      <span data-test-opening-hours-value>{{
-        config?.openingHours?.[day]
-      }}</span>
+      <span
+        data-test-opening-hours-value
+        :data-sanity="attr('openingHours', day)"
+      >
+        {{ config?.openingHours?.[day] }}
+      </span>
     </li>
     <li
       v-if="showCta && ctaParts.length"
       data-test-opening-hours-cta
       class="small pt-1.5"
+      :data-sanity="attr('openingHours', 'cta')"
     >
       <template v-for="(part, index) in ctaParts" :key="index">
         <NuxtLink

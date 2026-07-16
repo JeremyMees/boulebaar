@@ -6,6 +6,7 @@ import { mockImage } from '~~/test/mock'
 const baseMeta = {
   documentId: 'doc-1',
   documentType: 'page',
+  blockKey: 'block-1',
 }
 
 const baseLink = {

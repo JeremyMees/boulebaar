@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { BlockMeta, SanityImage } from '@/types/blocks'
+import type { BlockProps, SanityImage } from '@/types/blocks'
 
-defineProps<BlockMeta & ImageHero & { image: SanityImage }>()
+const props = defineProps<BlockProps & ImageHero & { image: SanityImage }>()
+const attr = useBlockAttribute(props)
 </script>
 
 <template>
@@ -12,6 +13,7 @@ defineProps<BlockMeta & ImageHero & { image: SanityImage }>()
       <SanityImage
         v-if="image?.asset"
         data-test-image
+        :data-sanity="attr('image')"
         :asset-id="image.asset._ref"
         :modifiers="{
           ...(image.crop ? { crop: image.crop } : {}),
@@ -29,7 +31,7 @@ defineProps<BlockMeta & ImageHero & { image: SanityImage }>()
       class="content-container py-8 md:pt-16 flex justify-between gap-10"
     >
       <div class="flex flex-col gap-6">
-        <h2 data-test-title>
+        <h2 data-test-title :data-sanity="attr('title')">
           {{ title }}
         </h2>
         <OpeningHours data-test-opening-hours show-cta />

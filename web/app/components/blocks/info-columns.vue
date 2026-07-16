@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { BlockMeta, InfoColumnsBlock } from '@/types/blocks'
+import type { BlockProps, InfoColumnsBlock } from '@/types/blocks'
 
-defineProps<BlockMeta & InfoColumnsBlock>()
+const props = defineProps<BlockProps & InfoColumnsBlock>()
+const attr = useBlockAttribute(props)
 </script>
 
 <template>
@@ -11,12 +12,13 @@ defineProps<BlockMeta & InfoColumnsBlock>()
   >
     <div
       v-for="(column, index) in columns"
-      :key="index"
+      :key="column._key ?? index"
       class="flex flex-col gap-6 md:gap-10"
     >
       <SanityImage
         v-if="column.image?.asset"
         data-test-image
+        :data-sanity="attr('columns', { _key: column._key }, 'image')"
         :asset-id="column.image.asset._ref"
         :modifiers="{
           ...(column.image.crop ? { crop: column.image.crop } : {}),
@@ -27,10 +29,16 @@ defineProps<BlockMeta & InfoColumnsBlock>()
         class="object-cover w-full aspect-10/12"
       />
       <div data-test-content class="flex flex-col gap-2">
-        <p class="font-semibold">{{ column.title }}</p>
+        <p
+          class="font-semibold"
+          :data-sanity="attr('columns', { _key: column._key }, 'title')"
+        >
+          {{ column.title }}
+        </p>
         <div
           v-if="column.text"
           data-test-text
+          :data-sanity="attr('columns', { _key: column._key }, 'text')"
           class="[&_p]:text-sm [&_p]:leading-[1.55] [&_p]:text-muted-foreground [&_a]:underline"
         >
           <Richtext :value="column.text" />

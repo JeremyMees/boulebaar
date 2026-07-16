@@ -2,17 +2,17 @@
 
 exports[`Menu > AccordionMenuSection > matches snapshot 1`] = `
 "<section id="menu" class="content-container max-w-300 flex flex-col gap-4 py-8 md:py-16">
-  <h2 data-test-title="">Our Menu</h2>
+  <h2 data-test-title="" data-sanity="id=doc-1;type=page;path=content:block-1.title;base=%2F">Our Menu</h2>
   <div data-test-block="" class="py-8 flex flex-col gap-6 border-t last:border-b">
     <div data-state="closed" data-slot="collapsible" class="flex flex-col gap-2">
       <div class="flex items-center justify-center gap-4">
-        <h3 data-test-block-title="" class="text-center">Drinks</h3><button data-slot="collapsible-trigger" data-variant="default" data-size="icon-sm" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border text-sm font-semibold transition-colors duration-150 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background aria-invalid:border-destructive bg-primary text-primary-foreground border-primary hover:bg-primary/90 size-9 group" type="button" aria-controls="" aria-expanded="false" data-state="closed" data-test-toggle=""><span class="iconify i-tabler:chevron-down group-data-[state=open]:rotate-180 transition-transform duration-300" aria-hidden="true"></span><span class="sr-only">Toggle</span></button>
+        <h3 data-test-block-title="" class="text-center" data-sanity="id=doc-1;type=page;path=content:block-1.menuBlock:acc-section-1.title;base=%2F">Drinks</h3><button data-slot="collapsible-trigger" data-variant="default" data-size="icon-sm" class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border text-sm font-semibold transition-colors duration-150 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*='size-'])]:size-4 shrink-0 [&amp;_svg]:shrink-0 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background aria-invalid:border-destructive bg-primary text-primary-foreground border-primary hover:bg-primary/90 size-9 group" type="button" aria-controls="" aria-expanded="false" data-state="closed" data-test-toggle=""><span class="iconify i-tabler:chevron-down group-data-[state=open]:rotate-180 transition-transform duration-300" aria-hidden="true"></span><span class="sr-only">Toggle</span></button>
       </div>
       <div data-v-c47004e3="" data-slot="collapsible-content" class="collapse-content" id="reka-collapsible-content-v-0-0-0" hidden="" data-state="closed" style="--reka-collapsible-content-height: 0px; --reka-collapsible-content-width: 0px;">
         <div class="pt-6 flex flex-col gap-x-4 gap-y-8 lg:grid lg:grid-cols-2 lg:gap-x-16">
           <div data-test-block-column="" class="flex flex-col gap-4">
-            <h4 data-test-subsection-title="" class="border-b pb-2">Beers</h4>
-            <div data-test-menu-item="" class="flex flex-col gap-0.5" data-test-block-column-item="">
+            <h4 data-test-subsection-title="" class="border-b pb-2" data-sanity="id=doc-1;type=page;path=content:block-1.menuBlock:acc-section-1.subSections:sub-1.title;base=%2F">Beers</h4>
+            <div data-test-menu-item="" class="flex flex-col gap-0.5" data-sanity="id=doc-1;type=page;path=content:block-1.menuBlock:acc-section-1.subSections:sub-1.items:drink-1;base=%2F" data-test-block-column-item="">
               <div class="flex items-center justify-between">
                 <p data-test-item-name="" class="relative h5">Lager
                   <!--v-if-->
@@ -23,8 +23,8 @@ exports[`Menu > AccordionMenuSection > matches snapshot 1`] = `
             </div>
           </div>
           <div data-test-block-column="" class="flex flex-col gap-4">
-            <h4 data-test-subsection-title="" class="border-b pb-2">Wines</h4>
-            <div data-test-menu-item="" class="flex flex-col gap-0.5" data-test-block-column-item="">
+            <h4 data-test-subsection-title="" class="border-b pb-2" data-sanity="id=doc-1;type=page;path=content:block-1.menuBlock:acc-section-1.subSections:sub-2.title;base=%2F">Wines</h4>
+            <div data-test-menu-item="" class="flex flex-col gap-0.5" data-sanity="id=doc-1;type=page;path=content:block-1.menuBlock:acc-section-1.subSections:sub-2.items:drink-2;base=%2F" data-test-block-column-item="">
               <div class="flex items-center justify-between">
                 <p data-test-item-name="" class="relative h5">Red wine
                   <!--v-if-->
@@ -43,12 +43,12 @@ exports[`Menu > AccordionMenuSection > matches snapshot 1`] = `
 
 exports[`Menu > MenuSection > matches snapshot 1`] = `
 "<section id="menu" class="content-container max-w-300 flex flex-col gap-4 py-8 md:py-16">
-  <h2 data-test-title="">Our Menu</h2>
+  <h2 data-test-title="" data-sanity="id=doc-1;type=page;path=content:block-1.title;base=%2F">Our Menu</h2>
   <div data-test-block="" class="py-8 flex flex-col gap-6 border-t last:border-b">
-    <h3 data-test-block-title="" class="text-center">Snacks</h3>
+    <h3 data-test-block-title="" class="text-center" data-sanity="id=doc-1;type=page;path=content:block-1.menuBlock:section-1.title;base=%2F">Snacks</h3>
     <div class="flex flex-col gap-4 lg:flex-row lg:gap-x-16">
       <div data-test-block-column="" class="flex flex-1 flex-col gap-4">
-        <div data-test-menu-item="" class="flex flex-col gap-0.5" data-test-block-column-item="">
+        <div data-test-menu-item="" class="flex flex-col gap-0.5" data-sanity="id=doc-1;type=page;path=content:block-1.menuBlock:section-1.items:item-1;base=%2F" data-test-block-column-item="">
           <div class="flex items-center justify-between">
             <p data-test-item-name="" class="relative h5">Croque monsieur
               <!--v-if-->
@@ -58,7 +58,7 @@ exports[`Menu > MenuSection > matches snapshot 1`] = `
         </div>
       </div>
       <div data-test-block-column="" class="flex flex-1 flex-col gap-4">
-        <div data-test-menu-item="" class="flex flex-col gap-0.5" data-test-block-column-item="">
+        <div data-test-menu-item="" class="flex flex-col gap-0.5" data-sanity="id=doc-1;type=page;path=content:block-1.menuBlock:section-1.items:item-2;base=%2F" data-test-block-column-item="">
           <div class="flex items-center justify-between">
             <p data-test-item-name="" class="relative h5">Avocado toast <span data-test-vegan="" class="absolute top-0 -right-4 text-xs font-bold"> vg </span></p><small data-test-item-price="">€9</small>
           </div>

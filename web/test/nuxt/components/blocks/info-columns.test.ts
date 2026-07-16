@@ -18,6 +18,7 @@ const textColumn = {
 const props = {
   documentId: 'doc-1',
   documentType: 'page',
+  blockKey: 'block-1',
   _type: 'infoColumns' as const,
   columns: [textColumn, textColumn, textColumn],
 }

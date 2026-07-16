@@ -4,13 +4,13 @@ exports[`ImageGrid > matches snapshot 1`] = `
 "<section data-test-image-grid="" class="content-container pt-nav pb-8 md:pb-16">
   <div class="flex gap-3 md:gap-4">
     <div class="flex-1 flex flex-col gap-3 md:gap-4">
-      <div data-test-item="" viewport="[object Object]" style="opacity: 0; transform: translateY(16px);"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="50vw md:33vw" loading="eager" class="w-full h-auto"></div>
+      <div data-test-item="" viewport="[object Object]" style="opacity: 0; transform: translateY(16px);"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" data-sanity="id=doc-1;type=page;path=content:block-1.images:image-key;base=%2F" modifiers="[object Object]" sizes="50vw md:33vw" loading="eager" class="w-full h-auto"></div>
     </div>
     <div class="flex-1 flex flex-col gap-3 md:gap-4">
-      <div data-test-item="" viewport="[object Object]" style="opacity: 0; transform: translateY(16px);"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="50vw md:33vw" loading="eager" class="w-full h-auto"></div>
+      <div data-test-item="" viewport="[object Object]" style="opacity: 0; transform: translateY(16px);"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" data-sanity="id=doc-1;type=page;path=content:block-1.images:image-key;base=%2F" modifiers="[object Object]" sizes="50vw md:33vw" loading="eager" class="w-full h-auto"></div>
     </div>
     <div class="flex-1 flex flex-col gap-3 md:gap-4">
-      <div data-test-item="" viewport="[object Object]" style="opacity: 0; transform: translateY(16px);"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" modifiers="[object Object]" sizes="50vw md:33vw" loading="eager" class="w-full h-auto"></div>
+      <div data-test-item="" viewport="[object Object]" style="opacity: 0; transform: translateY(16px);"><img src="https://cdn.sanity.io/images/test/test/image-abc123-800x600-jpg" alt="Alt text of image" data-test-image="" data-sanity="id=doc-1;type=page;path=content:block-1.images:image-key;base=%2F" modifiers="[object Object]" sizes="50vw md:33vw" loading="eager" class="w-full h-auto"></div>
     </div>
   </div>
 </section>"
