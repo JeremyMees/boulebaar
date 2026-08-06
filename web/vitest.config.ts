@@ -2,6 +2,11 @@ import { defineConfig } from 'vitest/config'
 import { defineVitestProject } from '@nuxt/test-utils/config'
 import { resolve } from 'node:path'
 
+const ignoredLogs = [
+  /^<Suspense>/,
+  /Cannot destructure property 'canonicalQueryWhitelist'.*seo-utils/,
+]
+
 export default defineConfig({
   test: {
     projects: [
@@ -23,11 +28,11 @@ export default defineConfig({
           include: ['test/nuxt/**/*.{test,spec}.ts'],
           environment: 'nuxt',
           setupFiles: ['./test/nuxt/setup.ts'],
-          onConsoleLog: l => {
-            return !l.startsWith('<Suspense>')
-          },
         },
       }),
     ],
+    onConsoleLog: l => {
+      return !ignoredLogs.some(p => p.test(l))
+    },
   },
 })
