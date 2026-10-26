@@ -46,9 +46,7 @@ export type SanityImage = {
 }
 
 export type PortableTextValue =
-  | Array<RichBlock | InlineLinkBlock>
-  | null
-  | undefined
+  Array<RichBlock | InlineLinkBlock> | null | undefined
 
 export interface InlineLinkBlock {
   _type: 'inlineLink'

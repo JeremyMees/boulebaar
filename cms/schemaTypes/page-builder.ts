@@ -1,5 +1,5 @@
 import { defineType, defineArrayMember } from 'sanity'
-import { BlockElementIcon } from '@sanity/icons'
+import { BlockElementIcon } from '@sanity/icons/BlockElement'
 
 export const pageBuilderType = defineType({
   name: 'pageBuilder',

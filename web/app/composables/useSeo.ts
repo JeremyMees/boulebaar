@@ -44,7 +44,7 @@ export function useSeo(
 
   const { url: siteUrl } = useSiteConfig()
 
-  useSchemaOrg(() => {
+  const schemaNodes = () => {
     const siteConfig = config.value
     const email = stripStega(siteConfig?.email)
     const telephone = stripStega(siteConfig?.number)
@@ -105,5 +105,9 @@ export function useSeo(
       defineWebSite(),
       defineWebPage(),
     ]
-  })
+  }
+
+  // nuxt-schema-org types only accept a ref, but a getter is still resolved
+  // lazily by useHead, so SSR output waits for the async global config
+  useSchemaOrg(schemaNodes as unknown as Parameters<typeof useSchemaOrg>[0])
 }

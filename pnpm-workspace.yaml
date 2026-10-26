@@ -1,3 +1,10 @@
 packages:
   - 'cms'
   - 'web'
+allowBuilds:
+  '@parcel/watcher': true
+  '@sentry/cli': true
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+  vue-demi: true

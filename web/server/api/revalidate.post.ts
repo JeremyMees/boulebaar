@@ -29,10 +29,12 @@ export default defineEventHandler(async event => {
 
   const payload = parsePayload(body)
 
-  const paths =
+  const pagePaths =
     payload._type === 'page' && payload.slug
       ? [withoutTrailingSlash(withLeadingSlash(payload.slug))]
       : await getAllPaths()
+
+  const paths = [...pagePaths, ...pagePaths.map(toMarkdownPath), '/llms.txt']
 
   const results = await Promise.allSettled(
     paths.map(path =>
@@ -55,6 +57,10 @@ function parsePayload(body: string): WebhookPayload {
   } catch {
     return {}
   }
+}
+
+function toMarkdownPath(path: string): string {
+  return path === '/' ? '/index.md' : `${path}.md`
 }
 
 async function getAllPaths(): Promise<string[]> {

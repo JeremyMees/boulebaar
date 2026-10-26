@@ -34,5 +34,10 @@ export default defineConfig({
     onConsoleLog: l => {
       return !ignoredLogs.some(p => p.test(l))
     },
+    onUnhandledError: e => {
+      return !(
+        e.name === 'AbortError' && e.message === 'The animation was canceled.'
+      )
+    },
   },
 })

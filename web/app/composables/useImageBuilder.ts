@@ -7,10 +7,7 @@ import type {
 } from '@sanity/image-url'
 
 type ImageBuilderConfig =
-  | SanityClientLike
-  | SanityProjectDetails
-  | SanityModernClientLike
-  | undefined
+  SanityClientLike | SanityProjectDetails | SanityModernClientLike | undefined
 
 export function useImageBuilder() {
   const builder = createImageUrlBuilder(

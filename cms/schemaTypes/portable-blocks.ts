@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity'
-import { CubeIcon } from '@sanity/icons'
+import { CubeIcon } from '@sanity/icons/Cube'
 import { requiredLinkField } from 'sanity-plugin-link-field'
 
 const inlineLinkType = defineType({

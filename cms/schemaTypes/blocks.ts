@@ -1,12 +1,10 @@
-import {
-  HeartIcon,
-  ImageIcon,
-  ImagesIcon,
-  InlineElementIcon,
-  TruncateIcon,
-  UlistIcon,
-  BottleIcon,
-} from '@sanity/icons'
+import { HeartIcon } from '@sanity/icons/Heart'
+import { ImageIcon } from '@sanity/icons/Image'
+import { ImagesIcon } from '@sanity/icons/Images'
+import { InlineElementIcon } from '@sanity/icons/InlineElement'
+import { TruncateIcon } from '@sanity/icons/Truncate'
+import { UlistIcon } from '@sanity/icons/Ulist'
+import { BottleIcon } from '@sanity/icons/Bottle'
 import { defineField, defineType } from 'sanity'
 
 const imageHeroType = defineType({

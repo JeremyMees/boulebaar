@@ -113,6 +113,10 @@ export default defineNuxtConfig({
     enabled: false,
   },
 
+  skewProtection: {
+    enabled: false,
+  },
+
   routeRules: {
     '/**': {
       headers: {

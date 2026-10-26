@@ -1,5 +1,6 @@
 import { defineField, defineType } from 'sanity'
-import { CogIcon, LinkIcon } from '@sanity/icons'
+import { CogIcon } from '@sanity/icons/Cog'
+import { LinkIcon } from '@sanity/icons/Link'
 import { requiredLinkField } from 'sanity-plugin-link-field'
 
 const navigationLinkType = defineType({

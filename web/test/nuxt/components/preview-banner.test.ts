@@ -3,8 +3,7 @@ import { mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
 import PreviewBanner from '~/components/preview-banner.vue'
 
 type VisualEditingState =
-  | { enabled: boolean; inFrame: boolean | undefined }
-  | undefined
+  { enabled: boolean; inFrame: boolean | undefined } | undefined
 
 const STUDIO_URL = 'https://test.sanity.studio'
 const ENCODED_PATH = encodeURIComponent('/')
