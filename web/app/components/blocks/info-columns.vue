@@ -15,17 +15,11 @@ const attr = useBlockAttribute(props)
       :key="column._key ?? index"
       class="flex flex-col gap-6 md:gap-10"
     >
-      <SanityImage
-        v-if="column.image?.asset"
+      <CmsImage
+        :image="column.image"
         data-test-image
         :data-sanity="attr('columns', { _key: column._key }, 'image')"
-        :asset-id="column.image.asset._ref"
-        :modifiers="{
-          ...(column.image.crop ? { crop: column.image.crop } : {}),
-          ...(column.image.hotspot ? { hotspot: column.image.hotspot } : {}),
-        }"
-        :alt="stripStega(column.image.altText)"
-        sizes="100vw md:50vw lg:33vw"
+        sizes="sm:100vw md:50vw lg:33vw xl:33vw 2xl:33vw"
         class="object-cover w-full aspect-10/12"
       />
       <div data-test-content class="flex flex-col gap-2">

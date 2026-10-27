@@ -44,16 +44,10 @@ const layouts = computed(() => [
           :viewport="{ once: true, amount: 0.1 }"
           :transition="{ duration: 0.45, ease: 'easeOut' }"
         >
-          <SanityImage
-            v-if="image?.asset"
+          <CmsImage
+            :image="image"
             data-test-image
-            :data-sanity="attr('images', { _key: image._key })"
-            :asset-id="image.asset._ref"
-            :modifiers="{
-              ...(image.crop ? { crop: image.crop } : {}),
-              ...(image.hotspot ? { hotspot: image.hotspot } : {}),
-            }"
-            :alt="stripStega(image.altText)"
+            :data-sanity="image && attr('images', { _key: image._key })"
             sizes="sm:50vw md:33vw lg:33vw xl:33vw 2xl:33vw"
             :loading="index < 2 ? 'eager' : 'lazy'"
             class="w-full h-auto"

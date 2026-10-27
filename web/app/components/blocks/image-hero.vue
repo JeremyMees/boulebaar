@@ -10,16 +10,10 @@ const attr = useBlockAttribute(props)
     <div
       class="h-[60vw] sm:aspect-16/10 sm:h-auto sm:max-h-dvh w-full overflow-hidden"
     >
-      <SanityImage
-        v-if="image?.asset"
+      <CmsImage
+        :image="image"
         data-test-image
         :data-sanity="attr('image')"
-        :asset-id="image.asset._ref"
-        :modifiers="{
-          ...(image.crop ? { crop: image.crop } : {}),
-          ...(image.hotspot ? { hotspot: image.hotspot } : {}),
-        }"
-        :alt="stripStega(image.altText)"
         preload
         loading="eager"
         fetchpriority="high"

@@ -1,21 +1,24 @@
 import { defineComponent, h } from 'vue'
+import type { PropType } from 'vue'
 import { config } from '@vue/test-utils'
+import type { SanityImage } from '~/types/blocks'
 
 config.global.stubs = {
   ...config.global.stubs,
-  SanityImage: defineComponent({
-    name: 'SanityImage',
+  CmsImage: defineComponent({
+    name: 'CmsImage',
     props: {
-      assetId: { type: String, required: true },
-      alt: String,
+      image: { type: Object as PropType<SanityImage | null>, default: null },
     },
     setup(props, { attrs }) {
       return () =>
-        h('img', {
-          src: `https://cdn.sanity.io/images/test/test/${props.assetId}`,
-          alt: props.alt,
-          ...attrs,
-        })
+        props.image?.asset
+          ? h('img', {
+              src: `https://cdn.sanity.io/images/test/test/${props.image.asset._ref}`,
+              alt: props.image.altText,
+              ...attrs,
+            })
+          : null
     },
   }),
 }

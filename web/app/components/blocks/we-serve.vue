@@ -19,12 +19,10 @@ const attr = useBlockAttribute(props)
       <h4 data-test-title :data-sanity="attr('title')">
         {{ title }}
       </h4>
-      <SanityImage
-        v-if="logo?.asset"
+      <CmsImage
+        :image="logo"
         data-test-image
         :data-sanity="attr('logo')"
-        :asset-id="logo.asset._ref"
-        :alt="stripStega(logo.altText)"
         width="341"
         height="168"
       />
