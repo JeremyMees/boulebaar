@@ -1,12 +1,13 @@
 <script setup lang="ts">
 const isInEditor = useIsSanityPresentationTool()
+const hasFinePointer = useMediaQuery('(pointer: fine)')
 </script>
 
 <template>
   <NuxtRouteAnnouncer />
 
   <ClientOnly>
-    <Cursor v-if="!isInEditor" />
+    <LazyCursor v-if="hasFinePointer && !isInEditor" />
   </ClientOnly>
 
   <NuxtLayout>
