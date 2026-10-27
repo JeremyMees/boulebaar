@@ -10,15 +10,5 @@ Sentry.init({
   ],
   denyUrls: [/^iabjs:\/\//],
 
-  // Tracing
-  tracesSampleRate: 1.0,
-
-  // Vue component lifecycle tracking
-  integrations: [
-    Sentry.vueIntegration({
-      tracingOptions: {
-        trackComponents: true,
-      },
-    }),
-  ],
+  tracesSampleRate: 0.1,
 })
