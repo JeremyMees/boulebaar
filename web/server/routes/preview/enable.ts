@@ -1,18 +1,10 @@
-import { createClient } from '@sanity/client'
 import { validatePreviewUrl } from '@sanity/preview-url-secret'
 
 export default defineEventHandler(async event => {
   const config = useRuntimeConfig(event)
-  const { projectId, dataset, apiVersion } = config.public.sanity
   const { token, previewModeId } = config.sanity.visualEditing
 
-  const client = createClient({
-    projectId,
-    dataset,
-    apiVersion,
-    token,
-    useCdn: false,
-  })
+  const client = useSanity(event).client.withConfig({ token, useCdn: false })
 
   const { isValid, redirectTo = '/' } = await validatePreviewUrl(
     client,

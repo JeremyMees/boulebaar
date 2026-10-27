@@ -1,10 +1,4 @@
 import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook'
-import { withLeadingSlash, withoutTrailingSlash } from 'ufo'
-
-type WebhookPayload = {
-  _type?: string
-  slug?: string
-}
 
 export default defineEventHandler(async event => {
   const { revalidateSecret, vercelBypassToken } = useRuntimeConfig(event)
@@ -27,44 +21,29 @@ export default defineEventHandler(async event => {
     })
   }
 
-  const payload = parsePayload(body)
-
-  const pagePaths =
-    payload._type === 'page' && payload.slug
-      ? [withoutTrailingSlash(withLeadingSlash(payload.slug))]
-      : await getAllPaths()
-
-  const paths = [...pagePaths, ...pagePaths.map(toMarkdownPath), '/llms.txt']
+  const paths = await revalidationPaths(parsePayload(body), useSanity(event))
 
   const results = await Promise.allSettled(
     paths.map(path =>
       $fetch.raw(new URL(path, baseUrl).href, {
         headers: { 'x-prerender-revalidate': vercelBypassToken },
+        ignoreResponseError: true,
       }),
     ),
   )
 
-  const failed = paths.filter(
-    (_, index) => results[index]?.status === 'rejected',
-  )
+  const failed = paths.filter((_, index) => {
+    const result = results[index]
+    return result?.status !== 'fulfilled' || result.value.status >= 500
+  })
 
   return { revalidated: paths.length - failed.length, failed }
 })
 
-function parsePayload(body: string): WebhookPayload {
+function parsePayload(body: string): RevalidationPayload {
   try {
-    return JSON.parse(body) as WebhookPayload
+    return JSON.parse(body) as RevalidationPayload
   } catch {
     return {}
   }
-}
-
-function toMarkdownPath(path: string): string {
-  return path === '/' ? '/index.md' : `${path}.md`
-}
-
-async function getAllPaths(): Promise<string[]> {
-  const urls = await $fetch<{ loc: string }[]>('/api/__sitemap__/urls')
-
-  return [...new Set(urls.map(({ loc }) => withoutTrailingSlash(loc)))]
 }

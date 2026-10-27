@@ -1,25 +1,10 @@
-import { createClient } from '@sanity/client'
-import { withLeadingSlash } from 'ufo'
 import type { SitemapUrlInput } from '#sitemap/types'
 
-export default defineSitemapEventHandler(async () => {
-  const client = createClient({
-    projectId: process.env.NUXT_SANITY_PROJECT_ID!,
-    dataset: process.env.NUXT_SANITY_DATASET!,
-    apiVersion: process.env.NUXT_SANITY_API_VERSION,
-    token: process.env.NUXT_SANITY_API_READ_TOKEN,
-    useCdn: false,
-  })
+export default defineSitemapEventHandler(async event => {
+  const pages = await listPages(useSanity(event))
 
-  const pages = await client.fetch<{ slug: string; _updatedAt: string }[]>(`
-    *[_type == "page" && defined(slug.current)]{
-      "slug": slug.current,
-      _updatedAt,
-    }
-  `)
-
-  return pages.map<SitemapUrlInput>(({ slug, _updatedAt }) => ({
-    loc: withLeadingSlash(slug),
-    lastmod: _updatedAt,
+  return pages.map<SitemapUrlInput>(({ path, lastmod }) => ({
+    loc: path,
+    lastmod,
   }))
 })
