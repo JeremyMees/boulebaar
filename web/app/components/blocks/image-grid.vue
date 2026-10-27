@@ -6,18 +6,31 @@ const props = defineProps<
 >()
 const attr = useBlockAttribute(props)
 
-const isMobile = useMediaQuery('(max-width: 767px)')
-
-const columns = computed(() =>
-  distributeIntoColumns(props.images, isMobile.value ? 2 : 3),
-)
+const layouts = computed(() => [
+  {
+    count: 2,
+    class: 'flex md:hidden',
+    columns: distributeIntoColumns(props.images, 2),
+  },
+  {
+    count: 3,
+    class: 'hidden md:flex',
+    columns: distributeIntoColumns(props.images, 3),
+  },
+])
 </script>
 
 <template>
   <section data-test-image-grid class="content-container pt-nav pb-8 md:pb-16">
-    <div class="flex gap-3 md:gap-4">
+    <div
+      v-for="layout in layouts"
+      :key="layout.count"
+      :data-test-layout="layout.count"
+      class="gap-3 md:gap-4"
+      :class="layout.class"
+    >
       <div
-        v-for="(col, c) in columns"
+        v-for="(col, c) in layout.columns"
         :key="c"
         class="flex-1 flex flex-col gap-3 md:gap-4"
       >
@@ -26,7 +39,7 @@ const columns = computed(() =>
           :key="index"
           as="div"
           data-test-item
-          :initial="{ opacity: 0, y: 16 }"
+          :initial="index < 2 ? false : { opacity: 0, y: 16 }"
           :while-in-view="{ opacity: 1, y: 0 }"
           :viewport="{ once: true, amount: 0.1 }"
           :transition="{ duration: 0.45, ease: 'easeOut' }"
@@ -41,7 +54,7 @@ const columns = computed(() =>
               ...(image.hotspot ? { hotspot: image.hotspot } : {}),
             }"
             :alt="stripStega(image.altText)"
-            sizes="50vw md:33vw"
+            sizes="sm:50vw md:33vw lg:33vw xl:33vw 2xl:33vw"
             :loading="index < 2 ? 'eager' : 'lazy'"
             class="w-full h-auto"
           />
