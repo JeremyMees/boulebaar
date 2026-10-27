@@ -15,7 +15,7 @@ const modifiers = computed(() => ({
     provider="sanity"
     :src="image.asset._ref"
     :modifiers="modifiers"
-    :alt="stripStega(image.altText)"
+    :alt="image.altText"
     fit="max"
   />
 </template>

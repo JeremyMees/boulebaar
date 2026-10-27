@@ -21,7 +21,7 @@ const attr = useConfigAttribute()
 const days = computed(() => parseOpeningHours(config.value?.openingHours))
 
 const ctaParts = computed(() => {
-  const text = stripStega(config.value?.openingHours?.cta)
+  const text = config.value?.openingHours?.cta
   if (!text) return []
 
   return text.split(/(instagram)/gi).map(part => ({

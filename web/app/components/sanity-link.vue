@@ -29,13 +29,11 @@ const to = computed(() => {
   let result = hasProtocol(urlTo) ? urlTo : withLeadingSlash(urlTo)
 
   if (props.parameters) {
-    const params = stripStega(props.parameters)
-    result = withQuery(result, parseQuery(params))
+    result = withQuery(result, parseQuery(props.parameters))
   }
 
   if (props.anchor) {
-    const anchor = stripStega(props.anchor)
-    result = withFragment(result, anchor.replace(/^#/, ''))
+    result = withFragment(result, props.anchor.replace(/^#/, ''))
   }
 
   return result

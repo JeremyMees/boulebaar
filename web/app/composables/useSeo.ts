@@ -4,12 +4,10 @@ export function useSeo(
   const { data: config } = useGlobalConfig()
   const { urlFor } = useImageBuilder()
 
-  const title = computed(
-    () => stripStega(toValue(sanitySeo)?.title) || defaultSeo.name,
-  )
+  const title = computed(() => toValue(sanitySeo)?.title || defaultSeo.name)
 
   const description = computed(
-    () => stripStega(toValue(sanitySeo)?.description) || defaultSeo.description,
+    () => toValue(sanitySeo)?.description || defaultSeo.description,
   )
 
   const image = computed(() => {
@@ -46,12 +44,11 @@ export function useSeo(
 
   const schemaNodes = () => {
     const siteConfig = config.value
-    const email = stripStega(siteConfig?.email)
-    const telephone = stripStega(siteConfig?.number)
-    const sameAs = [
-      stripStega(siteConfig?.instagram),
-      stripStega(siteConfig?.facebook),
-    ].filter(Boolean) as string[]
+    const email = siteConfig?.email
+    const telephone = siteConfig?.number
+    const sameAs = [siteConfig?.instagram, siteConfig?.facebook].filter(
+      Boolean,
+    ) as string[]
     const contactPoint = {
       telephone,
       contactType: 'Customer Service',
