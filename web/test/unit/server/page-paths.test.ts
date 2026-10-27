@@ -1,12 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { listPages, revalidationPaths } from '../../../server/utils/page-paths'
 
-const aiAndSitemapFiles = [
-  '/llms.txt',
-  '/llms-full.txt',
-  '/sitemap.md',
-  '/sitemap.xml',
-]
+const aiAndSitemapFiles = ['/llms.txt', '/sitemap.md', '/sitemap.xml']
 
 const fakeClient = (pages: { slug: string; _updatedAt?: string }[] = []) => ({
   fetch: vi

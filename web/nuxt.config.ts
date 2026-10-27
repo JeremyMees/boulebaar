@@ -105,6 +105,10 @@ export default defineNuxtConfig({
     sources: ['/api/__sitemap__/urls'],
   },
 
+  aiReady: {
+    llmsFullTxt: false,
+  },
+
   site: {
     url: process.env.NUXT_PUBLIC_BASE_URL,
     name: defaultSeo.name,

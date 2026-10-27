@@ -22,12 +22,7 @@ const pagesQuery = `
   }
 `
 
-const alwaysRevalidated = [
-  '/llms.txt',
-  '/llms-full.txt',
-  '/sitemap.md',
-  '/sitemap.xml',
-]
+const alwaysRevalidated = ['/llms.txt', '/sitemap.md', '/sitemap.xml']
 
 function toPagePath(slug: string) {
   return withoutTrailingSlash(withLeadingSlash(slug))
