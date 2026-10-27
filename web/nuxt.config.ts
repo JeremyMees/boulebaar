@@ -94,6 +94,11 @@ export default defineNuxtConfig({
     },
   },
 
+  icon: {
+    serverBundle: false,
+    clientBundle: { scan: true },
+  },
+
   shadcn: { prefix: '' },
 
   sitemap: {

@@ -2,7 +2,6 @@ import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { presentationTool } from 'sanity/presentation'
 import { vercelProtectionBypassTool } from '@sanity/vercel-protection-bypass'
-import { iconify } from 'sanity-plugin-iconify'
 import { media, mediaAssetSource } from 'sanity-plugin-media'
 import { linkField } from 'sanity-plugin-link-field'
 import { imageAssetPickerPlugin } from 'sanity-plugin-image-asset-picker'
@@ -29,7 +28,6 @@ export default defineConfig({
       },
     }),
     media(),
-    iconify({ collections: ['tabler'] }),
     linkField({
       linkableSchemaTypes: pageDocumentTypes.map(page => page.type),
     }),

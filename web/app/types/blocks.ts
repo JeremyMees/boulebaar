@@ -73,11 +73,6 @@ export interface SanityLink {
   anchor?: string | null
 }
 
-export type SanityIcon = {
-  _type: 'icon'
-  name?: string
-}
-
 type DistributiveOmit<T, K extends PropertyKey> = T extends unknown
   ? Omit<T, K>
   : never
