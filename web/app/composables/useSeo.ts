@@ -81,8 +81,9 @@ export function useSeo(
         currenciesAccepted: 'EUR',
         paymentAccepted: 'Cash, Bancontact, Credit Card',
         hasMenu: `${siteUrl}/#menu`,
-        openingHoursSpecification:
-          generateOpeningHoursSpecification(siteConfig),
+        openingHoursSpecification: toOpeningHoursSpecification(
+          siteConfig?.openingHours,
+        ),
         contactPoint,
         sameAs,
         areaServed: {

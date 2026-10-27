@@ -18,25 +18,7 @@ const props = withDefaults(
 const { data: config } = await useGlobalConfig()
 const attr = useConfigAttribute()
 
-const days: Day[] = [
-  'monday',
-  'tuesday',
-  'wednesday',
-  'thursday',
-  'friday',
-  'saturday',
-  'sunday',
-]
-
-const dayLabelMap: Record<Day, string> = {
-  monday: 'ma',
-  tuesday: 'di',
-  wednesday: 'wo',
-  thursday: 'do',
-  friday: 'vr',
-  saturday: 'za',
-  sunday: 'zo',
-}
+const days = computed(() => parseOpeningHours(config.value?.openingHours))
 
 const ctaParts = computed(() => {
   const text = stripStega(config.value?.openingHours?.cta)
@@ -52,7 +34,7 @@ const ctaParts = computed(() => {
 <template>
   <ul id="visit" data-test-opening-hours :class="cn('w-full', props.class)">
     <li
-      v-for="day in days"
+      v-for="{ day, label, text } in days"
       :key="day"
       data-test-opening-hours-day
       class="py-1.5 border-b flex justify-between small"
@@ -62,12 +44,12 @@ const ctaParts = computed(() => {
           : 'text-muted-foreground border-muted'
       "
     >
-      <span data-test-opening-hours-label>{{ dayLabelMap[day] }}</span>
+      <span data-test-opening-hours-label>{{ label }}</span>
       <span
         data-test-opening-hours-value
         :data-sanity="attr('openingHours', day)"
       >
-        {{ config?.openingHours?.[day] }}
+        {{ text }}
       </span>
     </li>
     <li
